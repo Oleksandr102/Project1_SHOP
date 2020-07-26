@@ -2,11 +2,17 @@ package com.company.model.user;
 
 import com.company.model.user.enums.Rights;
 import com.company.model.user.enums.Status;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Objects;
 
 import static com.company.dao.users.UsersList.users;
 
+@Getter
+@Setter
+@ToString
 public class User {
     private Rights rights = Rights.USER;
     private Status status = Status.ACTIVE;
@@ -40,54 +46,6 @@ public class User {
                 .forEach(user -> user.setStatus(Status.ACTIVE));
     }
 
-    public Rights getRights() {
-        return rights;
-    }
-
-    public void setRights(Rights rights) {
-        this.rights = rights;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSeName() {
-        return seName;
-    }
-
-    public void setSeName(String seName) {
-        this.seName = seName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,6 +63,4 @@ public class User {
     public int hashCode() {
         return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getName(), getSeName());
     }
-
-
 }
