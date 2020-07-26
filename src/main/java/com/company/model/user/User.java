@@ -1,20 +1,13 @@
-package main.java.com.company.model;
+package com.company.model.user;
+
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.Status;
 
 import java.util.Objects;
 
-import static main.java.com.company.dao.users.UsersList.users;
+import static com.company.dao.users.UsersList.users;
 
-enum Rights {
-    USER,
-    ADMIN
-}
-
-enum Status {
-    ACTIVE,
-    BLOCKED
-}
-
-public class Users {
+public class User {
     private Rights rights = Rights.USER;
     private Status status = Status.ACTIVE;
     private String login;
@@ -22,13 +15,13 @@ public class Users {
     private String name;
     private String seName;
 
-    public Users(String login, String password, String name) {
+    public User(String login, String password, String name) {
         this.login = login;
         this.password = password;
         this.name = name;
     }
 
-    public Users(String login, String password, String name, String seName) {
+    public User(String login, String password, String name, String seName) {
         this.login = login;
         this.password = password;
         this.name = name;
@@ -37,14 +30,14 @@ public class Users {
 
     private void blockUser(String login) {
         users.stream()
-                .filter(users -> users.getLogin().equals(login))
-                .forEach(users -> users.setStatus(Status.BLOCKED));
+                .filter(user -> user.getLogin().equals(login))
+                .forEach(user -> user.setStatus(Status.BLOCKED));
     }
 
     private void unblockUser(String login) {
         users.stream()
-                .filter(users -> users.getLogin().equals(login))
-                .forEach(users -> users.setStatus(Status.ACTIVE));
+                .filter(user -> user.getLogin().equals(login))
+                .forEach(user -> user.setStatus(Status.ACTIVE));
     }
 
     public Rights getRights() {
@@ -99,13 +92,13 @@ public class Users {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return getRights() == users.getRights() &&
-                getStatus() == users.getStatus() &&
-                getLogin().equals(users.getLogin()) &&
-                getPassword().equals(users.getPassword()) &&
-                getName().equals(users.getName()) &&
-                Objects.equals(getSeName(), users.getSeName());
+        User user = (User) o;
+        return getRights() == user.getRights() &&
+                getStatus() == user.getStatus() &&
+                getLogin().equals(user.getLogin()) &&
+                getPassword().equals(user.getPassword()) &&
+                getName().equals(user.getName()) &&
+                Objects.equals(getSeName(), user.getSeName());
     }
 
     @Override

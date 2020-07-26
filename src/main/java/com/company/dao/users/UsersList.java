@@ -1,14 +1,14 @@
-package main.java.com.company.dao.users;
+package com.company.dao.users;
 
-import main.java.com.company.model.Users;
+import com.company.model.user.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class UsersList {
-    public static List<Users> users = new ArrayList<>(Arrays.asList(
-            new Users("admin", "admin", "Admin"),
-            new Users("user", "user", "User")
+    public static List<User> users = new ArrayList<>(Arrays.asList(
+            new User("admin", "admin", "Admin"),
+            new User("user", "user", "User")
     ));
 }
