@@ -1,4 +1,4 @@
-package com.company.service;
+package main.java.com.company.service;
 
 enum Categories {
     PHONE, TV, LAPTOP
@@ -25,7 +25,7 @@ public class UserOrder implements OrderFromUser {
     }
 
     public Categories getCategories() {
-        return categories;
+        return categories; //should be able toString
     }
 
     public void setCategories(Categories categories) {

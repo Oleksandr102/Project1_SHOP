@@ -1,4 +1,4 @@
-package com.company.model.user;
+package main.java.com.company.model.user;
 
 import com.company.model.user.enums.Rights;
 import com.company.model.user.enums.Status;

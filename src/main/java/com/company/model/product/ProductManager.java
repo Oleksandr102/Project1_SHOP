@@ -1,7 +1,10 @@
-package main.java.com.makkkkkkkks.product;
+package main.java.com.company.model.product;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ProductManager {
 

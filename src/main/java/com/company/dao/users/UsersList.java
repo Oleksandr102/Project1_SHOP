@@ -1,6 +1,6 @@
-package com.company.dao.users;
+package main.java.com.company.dao.users;
 
-import com.company.model.user.User;
+import main.java.com.company.model.user.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
