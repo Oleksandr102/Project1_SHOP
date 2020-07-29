@@ -1,19 +1,19 @@
 package main.java.com.company.service;
 
-import main.java.com.company.model.ActiveOrders;
-import main.java.com.company.model.product.Category;
-import main.java.com.company.service.interfaces.OrderFromUser;
+enum Categories {
+    PHONE, TV, LAPTOP
+}
 
 public class UserOrder implements OrderFromUser {
     private String activeOrder;
-    private Category category;
+    private Categories categories;
 
     private ActiveOrders activeOrders;
 
 
-    public UserOrder(String activeOrder, Category category) {
+    public UserOrder(String activeOrder, Categories categories) {
         this.activeOrder = activeOrder;
-        this.category = this.category;
+        this.categories = categories;
     }
 
     public String getActiveOrder() {
@@ -24,28 +24,23 @@ public class UserOrder implements OrderFromUser {
         this.activeOrder = activeOrder;
     }
 
-    public Category getCategory() {
-        return category;
+    public Categories getCategories() {
+        return categories; //should be able toString
     }
 
-    public void setCategories(Category category) {
-        this.category = category;
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 
     public void addOrder(String activeOrder) {
-        activeOrders.getOrderslist().put(category, activeOrder);
-    }
-
-    @Override
-    public void searchByCategory(String category) {
-
+        activeOrders.getOrderslist().put(categories, activeOrder);
     }
 
     public void displayProducts() {
         System.out.println(activeOrders.getOrderslist());
     }
 
-    public void searchByCategory(Category category) {
-        activeOrders.getOrderslist().forEach((Category, String) -> System.out.println(Category + " " + String));
+    public void searchByCategory(Categories categories) {
+        activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
     }
 }
