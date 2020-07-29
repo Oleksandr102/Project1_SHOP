@@ -1,6 +1,7 @@
 package main.java.com.company.view;
 
 import main.java.com.company.model.product.ProductManager;
+import main.java.com.company.service.CheckOut;
 import main.java.com.company.service.UserOrder;
 import main.java.com.company.model;
 import main.java.com.company.service;
