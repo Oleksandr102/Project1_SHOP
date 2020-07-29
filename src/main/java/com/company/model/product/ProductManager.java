@@ -1,11 +1,11 @@
-package main.java.com.makkkkkkkks.product;
+package main.java.com.company.model.product;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProductManager {
 
-    static Map<Integer, Product> products = new HashMap<Integer, Product>();
+    static Map<Integer, Product> products = new HashMap<>();
     static Integer productId = 0;
     static Product product;
     static Integer quantity = 0;

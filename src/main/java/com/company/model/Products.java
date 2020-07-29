@@ -1,4 +1,4 @@
-package com.company.model;
+package main.java.com.company.model;
 
 public class Products {
 }

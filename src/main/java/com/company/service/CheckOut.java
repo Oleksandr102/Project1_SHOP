@@ -1,4 +1,4 @@
-package com.company.service;
+package main.java.com.company.service;
 
 public class CheckOut {
 }

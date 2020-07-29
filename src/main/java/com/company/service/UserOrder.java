@@ -1,19 +1,19 @@
-package com.company.service;
+package main.java.com.company.service;
 
-enum Categories {
-    PHONE, TV, LAPTOP
-}
+import main.java.com.company.model.ActiveOrders;
+import main.java.com.company.model.product.Category;
+import main.java.com.company.service.interfaces.OrderFromUser;
 
 public class UserOrder implements OrderFromUser {
     private String activeOrder;
-    private Categories categories;
+    private Category category;
 
     private ActiveOrders activeOrders;
 
 
-    public UserOrder(String activeOrder, Categories categories) {
+    public UserOrder(String activeOrder, Category category) {
         this.activeOrder = activeOrder;
-        this.categories = categories;
+        this.category = this.category;
     }
 
     public String getActiveOrder() {
@@ -24,23 +24,28 @@ public class UserOrder implements OrderFromUser {
         this.activeOrder = activeOrder;
     }
 
-    public Categories getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(Categories categories) {
-        this.categories = categories;
+    public void setCategories(Category category) {
+        this.category = category;
     }
 
     public void addOrder(String activeOrder) {
-        activeOrders.getOrderslist().put(categories, activeOrder);
+        activeOrders.getOrderslist().put(category, activeOrder);
+    }
+
+    @Override
+    public void searchByCategory(String category) {
+
     }
 
     public void displayProducts() {
         System.out.println(activeOrders.getOrderslist());
     }
 
-    public void searchByCategory(Categories categories) {
-        activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
+    public void searchByCategory(Category category) {
+        activeOrders.getOrderslist().forEach((Category, String) -> System.out.println(Category + " " + String));
     }
 }
