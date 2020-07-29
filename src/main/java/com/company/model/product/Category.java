@@ -1,4 +1,4 @@
-package main.java.com.makkkkkkkks.product;
+package main.java.com.company.model.product;
 
 public enum Category {
     MOBILE,

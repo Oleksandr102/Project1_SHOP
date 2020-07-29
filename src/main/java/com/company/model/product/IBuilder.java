@@ -1,4 +1,4 @@
-package main.java.com.makkkkkkkks.product;
+package main.java.com.company.model.product;
 
 public interface IBuilder {
     IBuilder setName(String name);
@@ -9,9 +9,7 @@ public interface IBuilder {
 
     IBuilder setProducer(String producer);
 
-    IBuilder setPrice(Double price);
-
-    IBuilder setQuality(Integer quantity);
+    IBuilder setPrice(Float price);
 
     <T> T build();
 }

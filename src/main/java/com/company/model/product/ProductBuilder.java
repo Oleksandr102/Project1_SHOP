@@ -1,12 +1,11 @@
-package main.java.com.makkkkkkkks.product;
+package main.java.com.company.model.product;
 
 public class ProductBuilder implements IBuilder {
     private String name;
     private Long productСode;
     private Category category;
     private String producer;
-    private Double price;
-    private Integer quantity;
+    private Float price;
 
     @Override
     public IBuilder setName(String name) {
@@ -33,19 +32,13 @@ public class ProductBuilder implements IBuilder {
     }
 
     @Override
-    public IBuilder setPrice(Double price) {
+    public IBuilder setPrice(Float price) {
         this.price = price;
         return this;
     }
 
-    @Override
-    public IBuilder setQuality(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    @Override
+        @Override
     public Product build() {
-        return new Product(name, productСode, category, producer, price, quantity);
+        return new Product(name, productСode, category, producer, price);
     }
 }
