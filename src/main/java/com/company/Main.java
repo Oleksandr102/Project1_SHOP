@@ -1,8 +1,15 @@
-package com.company;
+package main.java.com.company;
+
+import main.java.com.company.model.product.Category;
+import main.java.com.company.model.product.ProductManager;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        ProductManager productManager = new ProductManager();
+        productManager.printALlProduct();
+        productManager.printByCategory(Category.MOBILE);
+
+        // write your code here
     }
 }
