@@ -19,6 +19,4 @@ public class CheckOut {
         }
         System.out.println("Total price is: " + totalPrice);
     }
-
-
 }

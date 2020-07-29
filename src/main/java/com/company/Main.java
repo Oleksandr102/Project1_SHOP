@@ -2,14 +2,14 @@ package main.java.com.company;
 
 import main.java.com.company.model.product.Category;
 import main.java.com.company.model.product.ProductManager;
+import main.java.com.company.view.AdminMenu;
 
 public class Main {
 
     public static void main(String[] args) {
-        ProductManager productManager = new ProductManager();
-        productManager.printALlProduct();
-        productManager.printByCategory(Category.MOBILE);
-
-        // write your code here
+        ProductManager.printALlProduct();
+        ProductManager.printByCategory(Category.MOBILE);
+        AdminMenu adminMenuService = new AdminMenu();
+        adminMenuService.runAdminMenuService();
     }
 }

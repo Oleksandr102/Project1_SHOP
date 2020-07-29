@@ -1,4 +1,4 @@
-package main.java.com.company.service;
+package main.java.com.company.service.interfaces;
 
 enum Categories {
     PHONE, TV, LAPTOP
@@ -34,6 +34,11 @@ public class UserOrder implements OrderFromUser {
 
     public void addOrder(String activeOrder) {
         activeOrders.getOrderslist().put(categories, activeOrder);
+    }
+
+    @Override
+    public void searchByCategory(String category) {
+
     }
 
     public void displayProducts() {
