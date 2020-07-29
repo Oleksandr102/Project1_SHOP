@@ -9,9 +9,7 @@ public interface IBuilder {
 
     IBuilder setProducer(String producer);
 
-    IBuilder setPrice(Double price);
-
-    IBuilder setQuality(Integer quantity);
+    IBuilder setPrice(Float price);
 
     <T> T build();
 }

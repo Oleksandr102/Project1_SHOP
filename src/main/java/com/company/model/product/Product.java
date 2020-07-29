@@ -5,16 +5,14 @@ public class Product {
     private Long productСode;
     private Category category;
     private String producer;
-    private Double price;
-    private Integer quantity;
+    private Float price;
 
-    public Product(String name, Long productСode, Category category, String producer, Double price, Integer quantity) {
+    public Product(String name, Long productСode, Category category, String producer, Float price) {
         this.name = name;
         this.productСode = productСode;
         this.category = category;
         this.producer = producer;
         this.price = price;
-        this.quantity = quantity;
     }
 
     public String getName() {
@@ -49,20 +47,12 @@ public class Product {
         this.producer = producer;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     @Override
@@ -71,8 +61,6 @@ public class Product {
                 " productСode=" + productСode +
                 " category=" + category +
                 " producer='" + producer +
-                " price=" + price +
-                " quantity=" + quantity;
-
+                " price=" + price;
     }
 }
