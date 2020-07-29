@@ -9,7 +9,7 @@ public class Main {
         ProductManager productManager = new ProductManager();
         productManager.printALlProduct();
         productManager.printByCategory(Category.MOBILE);
-
+        productManager.printById(2);
         // write your code here
     }
 }

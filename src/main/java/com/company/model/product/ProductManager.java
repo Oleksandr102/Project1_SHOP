@@ -56,13 +56,17 @@ public class ProductManager {
     public static void printByCategory(Category inputCategory) {
         Map<Integer, Product> result = products
                 .entrySet().stream()
-
-                .filter(map->map.getValue().getCategory().equals(inputCategory))
-
+                .filter(map -> map.getValue().getCategory().equals(inputCategory))
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-
         result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
+    }
 
+    public static void printById(Integer id) {
+        Map<Integer, Product> result = products
+                .entrySet().stream()
+                .filter(map -> map.getKey().equals(id))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
     }
 }
 
