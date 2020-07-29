@@ -26,7 +26,7 @@ public class UserMenu {
             String choice = scr.next();
             int check = switch (choice) {
                 case "1" -> {
-                    ProductManager.printProduct();
+                    ProductManager.printALlProduct();
                     yield 1;
                 }
                 case "2" -> {
