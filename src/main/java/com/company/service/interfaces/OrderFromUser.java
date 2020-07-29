@@ -3,5 +3,5 @@ package com.company.service;
 public interface OrderFromUser {
     void displayProducts();
     void addOrder(String activeOrder);
-    void searchByCategory(String categories);
+    void searchByCategory(Categories categories);
 }

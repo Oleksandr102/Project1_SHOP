@@ -1,15 +1,11 @@
 package com.company.service;
 
-enum Categories {
-    PHONE, TV, LAPTOP
-}
 
 public class UserOrder implements OrderFromUser {
     private String activeOrder;
     private Categories categories;
 
     private ActiveOrders activeOrders;
-
 
     public UserOrder(String activeOrder, Categories categories) {
         this.activeOrder = activeOrder;
@@ -33,14 +29,14 @@ public class UserOrder implements OrderFromUser {
     }
 
     public void addOrder(String activeOrder) {
-        activeOrders.getOrderslist().put(categories, activeOrder);
+        activeOrders.getOrdersList().put(categories, activeOrder);
     }
 
     public void displayProducts() {
-        System.out.println(activeOrders.getOrderslist());
+        System.out.println(activeOrders.getOrdersList());
     }
 
     public void searchByCategory(Categories categories) {
-        activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
+        activeOrders.getOrdersList().forEach((Categories, String) -> System.out.println(Categories + " " + String));
     }
 }
