@@ -167,7 +167,6 @@ public class AdminMenu {
                     nameIteration = false;
                 }
 
-                System.out.print("Code: ");
                 Long inputCode = 0L;
 
                 Codeloop:
