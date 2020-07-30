@@ -11,7 +11,7 @@ public class Order {
     }
 
     public void setProductName(String productName) {
-        this.productName = Product.getName();
+//        this.productName = Product.getName();
     }
 
     public float getProductPrice() {
@@ -19,7 +19,7 @@ public class Order {
     }
 
     public void setProductPrice(double productPrice) {
-        this.productPrice = Product.getPrice();
+//        this.productPrice = Product.getPrice();
     }
 
     @Override
