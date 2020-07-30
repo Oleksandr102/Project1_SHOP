@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
 
-    static Map<Integer, Product> products = new HashMap<Integer, Product>();
-    static Integer productId = 0;
+    public static Map<Integer, Product> products = new HashMap<Integer, Product>();
+    static Integer productId = 1;
     static Product product;
 
-    {
+    public static void initProducts(){
         ProductManager.addProduct("VHS", 123456L, Category.AUDIO_VIDEO, "Sony", 120.0f);
         ProductManager.addProduct("Ipnone", 53264L, Category.MOBILE, "Apple", 499.99f);
         ProductManager.addProduct("TV", 325655L, Category.TELEVISION, "Samsung", 800.00f);
@@ -19,7 +19,7 @@ public class ProductManager {
         ProductManager.addProduct("S9+", 54864L, Category.MOBILE, "Samsung", 800.0f);
         ProductManager.addProduct("Mate Pad Pro", 3215668L, Category.TABLETS, "Huawei", 320.0f);
         ProductManager.addProduct("JBL Charje 4", 351545L, Category.AUDIO_VIDEO, "JBL", 50.0f);
-        ProductManager.addProduct("Mi Smart Band 5 ", 165651L, Category.COMPUTER_PERIPHERAL, "Xiaomi", 30.0f);
+        ProductManager.addProduct("Mi Smart Band 5", 165651L, Category.COMPUTER_PERIPHERAL, "Xiaomi", 30.0f);
     }
 
     public static void addProduct(String name, Long productCode, Category category,
@@ -33,7 +33,6 @@ public class ProductManager {
                         .setProducer(producer)
                         .setPrice(price)
                         .build());
-
     }
 
     public static void editProduct(Integer productId, String name, Long productCode, Category category,
@@ -50,19 +49,17 @@ public class ProductManager {
     }
 
     public static void printALlProduct() {
-        products.forEach((a, b) -> System.out.println("Id " + a + " " + b));
+        products.forEach((a, b) -> System.out.println("ID: " + a + " | " + b));
     }
 
     public static void printByCategory(Category inputCategory) {
         Map<Integer, Product> result = products
                 .entrySet().stream()
-
-                .filter(map->map.getValue().getCategory().equals(inputCategory))
-
+                .filter(map -> map.getValue().getCategory().equals(inputCategory))
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
 
         result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
-
     }
+
 }
 
