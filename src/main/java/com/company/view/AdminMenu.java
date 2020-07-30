@@ -55,15 +55,9 @@ public class AdminMenu {
         System.out.println(MENU_LINE);
         showMenuItems(adminMenuItems);
         switch (enterChoice()) {
-            case 1 -> {
-                runSubMenuUserBlock();
-            }
-            case 2 -> {
-                System.out.println("Confirm/unconfirm user order");
-            }
-            case 3 -> {
-                runSubMenuProduct();
-            }
+            case 1 -> runSubMenuUserBlock();
+            case 2 -> System.out.println("Confirm/unconfirm user order");
+            case 3 -> runSubMenuProduct();
             case 4 -> {
                 // TODO: authorization method from Authorization class
             }
