@@ -2,9 +2,11 @@ package main.java.com.company.view;
 
 import main.java.com.company.model.product.ProductManager;
 import main.java.com.company.service.CheckOut;
+/*
 import main.java.com.company.service.UserOrder;
 import main.java.com.company.model;
 import main.java.com.company.service;
+*/
 
 import java.util.Scanner;
 
@@ -26,7 +28,7 @@ public class UserMenu {
             String choice = scr.next();
             int check = switch (choice) {
                 case "1" -> {
-                    ProductManager.printProduct();
+//                    ProductManager.printProduct();
                     yield 1;
                 }
                 case "2" -> {
@@ -47,11 +49,11 @@ public class UserMenu {
                     yield 2;
                 }
                 case "3" -> {
-                    ActiveOrders.showOrder(orderID);
+//                    ActiveOrders.showOrder(orderID);
                     yield 3;
                 }
                 case "4" -> {
-                    CheckOut.totalOrderPrice(orderID);
+//                    CheckOut.totalOrderPrice(orderID);
                     System.out.println("Do you want to pay with: \n"+
                             "      1.Card\n"+
                             "      2.Cash");
