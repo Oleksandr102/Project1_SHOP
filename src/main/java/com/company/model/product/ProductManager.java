@@ -49,7 +49,16 @@ public class ProductManager {
                 .build();
     }
 
-    public static void printALlProduct() {
+    public static Map<Integer, Product> getById(Integer idProduct) {
+        Map<Integer, Product> result = products
+                .entrySet().stream()
+                .filter(map -> map.getKey().equals(idProduct))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        return result;
+
+    }
+
+    public static void printAllProduct() {
         products.forEach((a, b) -> System.out.println("Id " + a + " " + b));
     }
 
@@ -68,5 +77,6 @@ public class ProductManager {
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
         result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
     }
+
 }
 
