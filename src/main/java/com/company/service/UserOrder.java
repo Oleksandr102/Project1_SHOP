@@ -1,3 +1,4 @@
+/*
 package main.java.com.company.service.interfaces;
 
 enum Categories {
@@ -49,3 +50,4 @@ public class UserOrder implements OrderFromUser {
         activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
     }
 }
+*/
