@@ -23,6 +23,5 @@ public class ActiveOrders {
         orderList.put(orderID++, order);
         order.setProductName(productName);
         order.setProductPrice(productPrice);
-
     }
 }

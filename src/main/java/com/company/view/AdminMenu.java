@@ -150,29 +150,38 @@ public class AdminMenu {
             }
             case 3 -> {
                 Scanner input = new Scanner(System.in);
-                String inputName = input.nextLine();
-/*
+                String inputName = "";
                 boolean nameIteration = true;
+                boolean codeIteration = true;
 
+                Nameloop:
                 while(nameIteration) {
                     System.out.print("Name of product: ");
                     inputName = input.nextLine();
                     for (Map.Entry<Integer, Product> entry : products.entrySet()) {
                         if(inputName.equals(entry.getValue().getName())){
                             System.out.println("Product with such name already exist");
-                            break;
+                            continue Nameloop;
                         }
-//                        nameIteration = false;
                     }
-                }*/
+                    nameIteration = false;
+                }
 
                 System.out.print("Code: ");
-                long productCode = input.nextInt();
+                Long inputCode = 0L;
 
-/*
-                     TODO: checking the Code for existence in other products
-                     TODO: need searchProductBy method from ProductManager class
-*/
+                Codeloop:
+                while(codeIteration) {
+                    System.out.print("Code of product: ");
+                    inputCode = input.nextLong();
+                    for (Map.Entry<Integer, Product> entry : products.entrySet()) {
+                        if(inputCode.equals(entry.getValue().getProductСode())){
+                            System.out.println("Product with such name already exist");
+                            continue Codeloop;
+                        }
+                    }
+                    codeIteration = false;
+                }
 
                 System.out.println("\t\t\tALL CATEGORIES");
                 for(Category s: Category.values()) {
@@ -181,9 +190,6 @@ public class AdminMenu {
                 System.out.print("\nCategory: ");
                 Scanner scan = new Scanner(System.in);
                 String categoryName = scan.nextLine();
-
-                // TODO: checking for category existence
-
                 Category category = Category.valueOf(categoryName);
 
                 System.out.print("Company: ");
@@ -192,7 +198,7 @@ public class AdminMenu {
                 System.out.print("Price: ");
                 Float price = (float)scan.nextDouble();
 
-                ProductManager.addProduct(inputName, productCode, category, producer, price);
+                ProductManager.addProduct(inputName, inputCode, category, producer, price);
 
                 // TODO: Check if the product has been added
 
@@ -233,8 +239,6 @@ public class AdminMenu {
                 Scanner scan = new Scanner(System.in);
                 String categoryName = scan.nextLine();
 
-                // TODO: checking for category existence
-
                 Category category = Category.valueOf(categoryName);
 
                 System.out.print("New company: ");
@@ -244,9 +248,6 @@ public class AdminMenu {
                 Float price = (float)scan.nextDouble();
 
                 ProductManager.editProduct(id, name, productCode, category, producer, price);
-
-                // TODO: Check if the product has been added
-
                 runSubMenuProduct();
             }
             case 6 -> runAdminMenu();
