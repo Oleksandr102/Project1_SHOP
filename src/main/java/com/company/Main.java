@@ -10,6 +10,6 @@ public class Main {
         ProductManager.printALlProduct();
         ProductManager.printByCategory(Category.MOBILE);
         AdminMenu adminMenuService = new AdminMenu();
-        adminMenuService.runAdminMenuService();
+        adminMenuService.runAdminMenu();
     }
 }
