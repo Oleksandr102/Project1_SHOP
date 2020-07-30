@@ -1,12 +1,14 @@
 package main.java.com.company.service;
+/*
 
 import main.java.com.company.model;
 import main.java.com.company.model.order.ActiveOrders;
+*/
 
 
 public class CheckOut {
 
-    public static void totalOrderPrice(Integer orderID) {
+/*    public static void totalOrderPrice(Integer orderID) {
         float totalPrice = 0f;
 //        foreach( int i = 0;
 //        i<currentOrder.length ;
@@ -18,5 +20,5 @@ public class CheckOut {
             totalPrice += productPrice;
         }
         System.out.println("Total price is: " + totalPrice);
-    }
+    }*/
 }
