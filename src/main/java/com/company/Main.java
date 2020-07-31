@@ -2,6 +2,7 @@ package main.java.com.company;
 
 import main.java.com.company.model.Users;
 import main.java.com.company.model.order.OrderService;
+import main.java.com.company.model.order.Status;
 import main.java.com.company.model.product.Product;
 import main.java.com.company.model.product.ProductManager;
 
@@ -22,7 +23,7 @@ public class Main {
         OrderService.addOrder(user, product2.get(4));
 
         OrderService.showOrdersByUser(user);
-        OrderService.confirmOrder(user);
+        OrderService.confirmOrder(user, Status.BLOCKED);
 
         System.out.println(OrderService.countSum(user));
     }
