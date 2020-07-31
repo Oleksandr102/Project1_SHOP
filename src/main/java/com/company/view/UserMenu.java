@@ -1,14 +1,11 @@
 package main.java.com.company.view;
 
 
-import main.java.com.company.model.order.Order;
+
 import main.java.com.company.model.order.OrderService;
 import main.java.com.company.model.product.Category;
-import main.java.com.company.model.product.Product;
 import main.java.com.company.model.product.ProductManager;
 import main.java.com.company.model.user.User;
-import main.java.com.company.service.CheckOut;
-import main.java.com.company.service.UserOrder;
 
 import java.util.Scanner;
 
@@ -16,7 +13,7 @@ public class UserMenu {
     Scanner scr = new Scanner(System.in);
     User currentUser = new User();
 
-    private String[] menu = {
+    private final String[] menu = {
             "1. Show available products.",
             "2. Search categories.",
             "3. Add items to order.",
