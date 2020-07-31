@@ -10,14 +10,14 @@ import java.util.Map;
 
 public class OrderService {
     private static List<Order> orders = new ArrayList<Order>();
-    private static List<Order> resultList = new ArrayList<Order>();
+    private static List<Product> resultList = new ArrayList<Product>();
     private static Map<Integer, Product> resultMap = new HashMap<Integer, Product>();
     private static List<Product> orderResult;
     private static Integer idOrder = 0;
     private static Float price = 0f;
     private static Status status = Status.ACTIVE;
 
-    public static void addOrder(Users users, Product product) {
+    public static void addOrder(Users users, Product product) { // заменить на продукт на id
         if (orders != null && !orders.isEmpty()) {
             orders.forEach(order -> {
                 if (order.getUser().equals(users)) {
@@ -49,26 +49,29 @@ public class OrderService {
         System.out.println(resultMap);
     }
 
-    public static Map<Integer, Product> confirmOrder(Users users) {
+    public static Map<Integer, Product> confirmOrder(Users users, Status status) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
                 orderResult = orders.get(i).getProduct();
+                orders.get(i).setStatus(status);
             }
         }
         for (int i = 0; i < orderResult.size(); i++) {
             resultMap.put(i, orderResult.get(i));
         }
+        System.out.println(resultMap);
         return resultMap;
     }
 
     public static Float countSum(Users users) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
-                price += orders.get(i).getProduct().get(i).getPrice();
-                System.out.println(i);
+                resultList = orders.get(i).getProduct();
             }
         }
-
+        for (int i = 0; i < resultList.size(); i++) {
+            price += resultList.get(i).getPrice();
+        }
         return price;
     }
 
