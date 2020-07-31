@@ -1,6 +1,8 @@
 package main.java.com.company.view;
 
 import main.java.com.company.model.order.ActiveOrders;
+import main.java.com.company.model.order.Order;
+import main.java.com.company.model.order.OrderService;
 import main.java.com.company.model.product.Category;
 import main.java.com.company.model.product.ProductManager;
 import main.java.com.company.model.user.User;
@@ -37,14 +39,14 @@ public class UserMenu {
                     yield 2;
                 }
                 case "3" -> {
-                    ProductManager.printById();
+                    ProductManager.printAllProduct();
                     System.out.println("Please enter product ID to add it to the order: "); //add to order
                     int pIdValue = Integer.parseInt(scr.next());
-                    OrderService.addOrder(pIdValue);
+                    OrderService.addOrder('?USER?', pIdValue);
                     yield 3;
                 }
                 case "4" -> {
-                    ActiveOrders.printByUser(currentUser);
+                    OrderService.showOrdersByUser(currentUser);
                     yield 4;
                 }
                 case "5" -> {

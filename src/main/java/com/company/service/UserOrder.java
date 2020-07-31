@@ -1,14 +1,17 @@
 package main.java.com.company.service;
 
+import main.java.com.company.model.order.OrderService;
+import main.java.com.company.service.interfaces.OrderFromUser;
+
 enum Categories {
     PHONE, TV, LAPTOP
 }
 
-public class UserOrder implements OrderFromUser {
+public abstract class UserOrder implements OrderFromUser {
     private String activeOrder;
     private Categories categories;
 
-    private ActiveOrders activeOrders;
+    private OrderService activeOrders;
 
 
     public UserOrder(String activeOrder, Categories categories) {

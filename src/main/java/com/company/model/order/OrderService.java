@@ -73,7 +73,7 @@ public class OrderService {
     }
 
     public static void showOrdersByUser(Users user) {
-        System.out.println("You orders");
+        System.out.println("Your orders: ");
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(user)) {
                 orderResult = orders.get(i).getProduct();
