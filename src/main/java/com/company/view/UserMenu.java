@@ -37,11 +37,15 @@ public class UserMenu {
                     yield 2;
                 }
                 case "3" -> {
-                    //add to order
+                    ProductManager.printById();
+                    System.out.println("Please enter product ID to add it to the order: "); //add to order
+                    int pIdValue = Integer.parseInt(scr.next());
+                    OrderService.addOrder(pIdValue);
+                    yield 3;
                 }
                 case "4" -> {
                     ActiveOrders.printByUser(currentUser);
-                    yield 3;
+                    yield 4;
                 }
                 case "5" -> {
                     CheckOut.totalOrderPrice(orderID);
@@ -54,11 +58,11 @@ public class UserMenu {
                     } else {
                         System.out.println("Sorry we don't currently accept cash, please use card");
                     }
-                    yield 4;
+                    yield 5;
                 }
                 case "6" -> {
                     exit();
-                    yield 5;
+                    yield 6;
                 }
                 default -> 1;
             };
