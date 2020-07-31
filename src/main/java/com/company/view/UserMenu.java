@@ -1,9 +1,10 @@
 package main.java.com.company.view;
 
-import main.java.com.company.model.order.ActiveOrders;
+
 import main.java.com.company.model.order.Order;
 import main.java.com.company.model.order.OrderService;
 import main.java.com.company.model.product.Category;
+import main.java.com.company.model.product.Product;
 import main.java.com.company.model.product.ProductManager;
 import main.java.com.company.model.user.User;
 import main.java.com.company.service.CheckOut;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 
 public class UserMenu {
     Scanner scr = new Scanner(System.in);
-    String currentUser = User.getUserID();
+    User currentUser = new User();
 
     private String[] menu = {
             "1. Show available products.",
@@ -42,7 +43,7 @@ public class UserMenu {
                     ProductManager.printAllProduct();
                     System.out.println("Please enter product ID to add it to the order: "); //add to order
                     int pIdValue = Integer.parseInt(scr.next());
-                    OrderService.addOrder('?USER?', pIdValue);
+                    OrderService.addOrder(currentUser, pIdValue);
                     yield 3;
                 }
                 case "4" -> {
@@ -50,7 +51,7 @@ public class UserMenu {
                     yield 4;
                 }
                 case "5" -> {
-                    CheckOut.totalOrderPrice(orderID);
+                    OrderService.countSum(currentUser);
                     System.out.println("Do you want to pay with: \n" +
                             "      1.Card\n" +
                             "      2.Cash");
