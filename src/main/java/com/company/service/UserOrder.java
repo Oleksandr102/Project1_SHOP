@@ -1,4 +1,5 @@
-package main.java.com.company.service;
+/*
+package main.java.com.company.service.interfaces;
 
 import main.java.com.company.model.order.OrderService;
 import main.java.com.company.service.interfaces.OrderFromUser;
@@ -39,6 +40,11 @@ public abstract class UserOrder implements OrderFromUser {
         activeOrders.getOrderslist().put(categories, activeOrder);
     }
 
+    @Override
+    public void searchByCategory(String category) {
+
+    }
+
     public void displayProducts() {
         System.out.println(activeOrders.getOrderslist());
     }
@@ -47,3 +53,4 @@ public abstract class UserOrder implements OrderFromUser {
         activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
     }
 }
+*/
