@@ -7,11 +7,18 @@ import main.java.com.company.model.user.User;
 
 import static main.java.com.company.model.product.ProductManager.products;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class AdminMenu {
+    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private User user = new User();
+    private static final String PAUSE = "Press Enter to continue";
     private static final String MENU_LINE = "-------------------------------";
     private final String[] adminMenuItems = {
+            "\t\t\tADMIN MENU",
             "1. BLOCK/UNBLOCK USER",
             "2. CONFIRM/UNCONFIRM USER ORDER (NOT ACTIVE)",
             "3. EDIT PRODUCTS",
@@ -19,12 +26,14 @@ public class AdminMenu {
             "0. EXIT"
     };
     private final String[] subMenuUserBlockItems = {
+            "\t\tBLOCK USER MENU",
             "1. BLOCK USER",
             "2. UNBLOCK USER",
             "3. BACK",
             "0. EXIT"
     };
     private final String[] subMenuProductItems = {
+            "\t\t\tPRODUCT MENU",
             "1. SHOW ALL PRODUCTS",
             "2. SHOW PRODUCTS BY CATEGORIES",
             "3. ADD PRODUCT",
@@ -41,18 +50,31 @@ public class AdminMenu {
     }
 
     public int enterChoice() {
-        Scanner input = new Scanner(System.in);
+//        Scanner input = new Scanner(System.in);
         System.out.println(MENU_LINE);
         System.out.print("Enter a number, please: ");
-        int choice = input.nextInt();
+//        int choice = input.nextInt();
+        int choice = Integer.parseInt(inputReader());
         System.out.println(MENU_LINE);
         return choice;
     }
 
+    public String inputReader() {
+        String input = null;
+        try {
+            input = reader.readLine();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return input;
+    }
+
+    public void pauseConsole() {
+        System.out.println(PAUSE);
+        inputReader();
+    }
+
     public void runAdminMenu() {
-        System.out.println(MENU_LINE);
-        System.out.println("\t\t\tADMIN MENU");
-        System.out.println(MENU_LINE);
         showMenuItems(adminMenuItems);
         switch (enterChoice()) {
             case 1 -> runSubMenuUserBlock();
@@ -75,27 +97,23 @@ public class AdminMenu {
             case 1 -> {
                 System.out.println("\t\tUSER BLOCKING");
                 System.out.print("Enter user login for blocking: ");   //Better would be if block user was by ID
-                Scanner input = new Scanner(System.in);
-                String login = input.nextLine();
-                User user = new User();
+//                Scanner input = new Scanner(System.in);
+//                String login = input.nextLine();
+                String login = inputReader();
                 user.blockUser(login);
                 System.out.println("User " + login + " was blocked\n" + MENU_LINE);
-
-                // TODO: check if user is blocked/unblocked
-
+                pauseConsole();
                 runSubMenuUserBlock();
             }
             case 2 -> {
                 System.out.println("\t\tUSER UNBLOCKING");
                 System.out.print("Enter user login for unblocking: ");
-                Scanner input = new Scanner(System.in);
-                String login = input.nextLine();
-                User user = new User();
+//                Scanner input = new Scanner(System.in);
+//                String login = input.nextLine();
+                String login = inputReader();
                 user.unblockUser(login);
                 System.out.println("User " + login + " was unblocked\n" + MENU_LINE);
-
-                // TODO: check if user is unblocked
-
+                pauseConsole();
                 runSubMenuUserBlock();
             }
             case 3 -> runAdminMenu();
@@ -109,55 +127,49 @@ public class AdminMenu {
 
     public void runSubMenuProduct() {
         showMenuItems(subMenuProductItems);
-        int choice = enterChoice();
-        switch (choice) {
+        switch (enterChoice()) {
             case 1 -> {
                 System.out.println("\t\t\tALL PRODUCTS");
-                ProductManager.initProducts();
                 if(products.isEmpty()) {
                     System.out.println("\nList of products is empty\n");
                 }
-                ProductManager.printALlProduct(); // method printAllProduct must return boolean
-                Scanner pause = new Scanner(System.in);
+                ProductManager.printALlProduct();
                 System.out.print("Press enter to continue");
-                pause.nextLine();
-                System.out.println(MENU_LINE);
+                pauseConsole();
                 runSubMenuProduct();
             }
             case 2 -> {
-                Scanner input = new Scanner(System.in);
+//                Scanner input = new Scanner(System.in);
                 boolean iteration = true;
                 while(iteration) {
                     System.out.println("\t\t\tALL CATEGORIES");
-                    Arrays.stream(Category.values()).forEach(s -> System.out.println(s));
+                    Arrays.stream(Category.values()).forEach(System.out::println);
                     System.out.print("\nEnter a category from the list: ");
-                    String categoryName = input.nextLine();
+                    String categoryName = inputReader();
                     try {
                         Category category = Category.valueOf(categoryName);
                         ProductManager.printByCategory(category);
                     } catch (Exception e){
                         System.out.println("!!! Wrong category input, try one more time !!!");
                         System.out.println("Press enter to continue");
-                        input.nextLine();
-                        System.out.println(MENU_LINE);
                         continue;
                     }
                     iteration = false;
-                    System.out.println("Press enter to continue" + MENU_LINE);
-                    input.nextLine();
+                    pauseConsole();
                     runSubMenuProduct();
                 }
             }
             case 3 -> {
-                Scanner input = new Scanner(System.in);
+//                Scanner input = new Scanner(System.in);
                 String inputName = "";
+                Long inputCode = 0L;
                 boolean nameIteration = true;
                 boolean codeIteration = true;
 
                 Nameloop:
                 while(nameIteration) {
                     System.out.print("Name of product: ");
-                    inputName = input.nextLine();
+                    inputName = inputReader();
                     for (Map.Entry<Integer, Product> entry : products.entrySet()) {
                         if(inputName.equals(entry.getValue().getName())){
                             System.out.println("Product with such name already exist");
@@ -167,12 +179,10 @@ public class AdminMenu {
                     nameIteration = false;
                 }
 
-                Long inputCode = 0L;
-
                 Codeloop:
                 while(codeIteration) {
                     System.out.print("Code of product: ");
-                    inputCode = input.nextLong();
+                    inputCode = Long.parseLong(inputReader());
                     for (Map.Entry<Integer, Product> entry : products.entrySet()) {
                         if(inputCode.equals(entry.getValue().getProductСode())){
                             System.out.println("Product with such name already exist");
@@ -183,24 +193,23 @@ public class AdminMenu {
                 }
 
                 System.out.println("\t\t\tALL CATEGORIES");
-                for(Category s: Category.values()) {
-                    System.out.println(s);
-                }
+                Arrays.stream(Category.values()).forEach(System.out::println);
+
                 System.out.print("\nCategory: ");
-                Scanner scan = new Scanner(System.in);
-                String categoryName = scan.nextLine();
+//                Scanner scan = new Scanner(System.in);
+//                String categoryName = scan.nextLine();
+                String categoryName = inputReader();
                 Category category = Category.valueOf(categoryName);
 
                 System.out.print("Company: ");
-                String producer = scan.nextLine();
+//                String producer = scan.nextLine();
+                String producer = inputReader();
 
                 System.out.print("Price: ");
-                Float price = (float)scan.nextDouble();
+//                Float price = (float)scan.nextDouble();
+                Float price = Float.parseFloat(inputReader());
 
                 ProductManager.addProduct(inputName, inputCode, category, producer, price);
-
-                // TODO: Check if the product has been added
-
                 runSubMenuProduct();
             }
             case 4 -> {
@@ -210,42 +219,33 @@ public class AdminMenu {
 */
             }
             case 5 -> {
-                Scanner input = new Scanner(System.in);
+//                Scanner input = new Scanner(System.in);
                 System.out.print("Choose the product by ID: ");
-                int id = input.nextInt();
+//                int id = input.nextInt();
+                int id = Integer.parseInt(inputReader());
 
                 System.out.print("New name: ");
-                String name = new Scanner(System.in).nextLine();
-                if (true) {
-/*
-                     TODO: checking the Name for existence in other products
-                     TODO: need searchProductBy method from ProductManager class
-*/
-                }
-                System.out.print("New code: ");
-                long productCode = input.nextInt();
-                if (true) {
-/*
-                     TODO: checking the Code for existence in other products
-                     TODO: need searchProductBy method from ProductManager class
-*/
-                }
-                System.out.println("\t\t\tALL CATEGORIES");
-                for(Category s: Category.values()) {
-                    System.out.println(s);
-                }
-                System.out.print("\nNew category: ");
-                Scanner scan = new Scanner(System.in);
-                String categoryName = scan.nextLine();
+                String name = inputReader();
 
+                System.out.print("New code: ");
+//                long productCode = input.nextInt();
+                long productCode = Long.parseLong(inputReader());
+
+                System.out.println("\t\t\tALL CATEGORIES");
+                Arrays.stream(Category.values()).forEach(System.out::println);
+                System.out.print("\nNew category: ");
+//                Scanner scan = new Scanner(System.in);
+//                String categoryName = scan.nextLine();
+                String categoryName = inputReader();
                 Category category = Category.valueOf(categoryName);
 
                 System.out.print("New company: ");
-                String producer = scan.nextLine();
+//                String producer = scan.nextLine();
+                String producer = inputReader();
 
                 System.out.print("New price: ");
-                Float price = (float)scan.nextDouble();
-
+//                Float price = (float)scan.nextDouble();
+                Float price = Float.parseFloat(inputReader());
                 ProductManager.editProduct(id, name, productCode, category, producer, price);
                 runSubMenuProduct();
             }
