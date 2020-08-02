@@ -40,15 +40,15 @@ public class UserMenu {
                     ProductManager.printAllProduct();
                     System.out.println("Please enter product ID to add it to the order: "); //add to order
                     int pIdValue = Integer.parseInt(scr.next());
-                    OrderService.addOrder(currentUser, pIdValue);
+//                    OrderService.addOrder(currentUser, pIdValue);
                     yield 3;
                 }
                 case "4" -> {
-                    OrderService.showOrdersByUser(currentUser);
+//                    OrderService.showOrdersByUser(currentUser);
                     yield 4;
                 }
                 case "5" -> {
-                    OrderService.countSum(currentUser);
+//                    OrderService.countSum(currentUser);
                     System.out.println("Do you want to pay with: \n" +
                             "      1.Card\n" +
                             "      2.Cash");
