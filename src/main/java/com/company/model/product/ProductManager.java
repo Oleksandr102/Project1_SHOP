@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
 
-    static Map<Integer, Product> products = new HashMap<Integer, Product>();
+    public static Map<Integer, Product> products = new HashMap<Integer, Product>();
     static Integer productId = 0;
     static Product product;
 
@@ -78,5 +78,8 @@ public class ProductManager {
         result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
     }
 
+    public static void deleteProduct(Integer productId) {
+        products.remove(productId);
+    }
 }
 
