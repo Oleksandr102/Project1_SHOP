@@ -119,7 +119,7 @@ public class AdminMenu {
         if(products.isEmpty()) {
             System.out.println("\nList of products is empty\n");
         }
-        ProductManager.printALlProduct();
+        ProductManager.printAllProduct();
         pauseConsole();
         runSubMenuProduct();
     }
