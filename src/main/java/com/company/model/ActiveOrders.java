@@ -1,4 +1,4 @@
-package main.java.com.company.model;
+package com.company.model;
 
 import java.util.TreeMap;
 
