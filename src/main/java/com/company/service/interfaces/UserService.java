@@ -1,9 +1,13 @@
 package main.java.com.company.service.interfaces;
 
+import main.java.com.company.model.user.User;
+
 public interface UserService {
     void userAdd(String login, String password);
 
-    void userShowByLogin(String login);
+    User userShowByLogin(String login);
+
+    User userCheckByPassword(String password);
 
     void userShowAll();
 
