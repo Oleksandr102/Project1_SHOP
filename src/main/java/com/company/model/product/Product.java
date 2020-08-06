@@ -1,7 +1,5 @@
 package main.java.com.company.model.product;
 
-import java.util.Objects;
-
 public class Product {
     private String name;
     private Long productCode;
@@ -64,7 +62,7 @@ public class Product {
         String formCategory = String.format("Category = %-20s", category);
         String formProducer = String.format("Producer = %-10s", producer);
         String formPrice = String.format("Price = %-5s", price);
-        return          formName +
+        return formName +
                 " | " + formCode +
                 " | " + formCategory +
                 " | " + formProducer +

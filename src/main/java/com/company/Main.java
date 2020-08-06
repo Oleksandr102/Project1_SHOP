@@ -1,13 +1,5 @@
 package main.java.com.company;
 
-import main.java.com.company.model.Users;
-import main.java.com.company.model.order.OrderService;
-import main.java.com.company.model.order.Status;
-import main.java.com.company.model.product.Product;
-import main.java.com.company.model.product.ProductManager;
-
-import java.util.Map;
-
 public class Main {
 
     public static void main(String[] args) {

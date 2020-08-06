@@ -8,9 +8,11 @@ import main.java.com.company.model.user.User;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
 
-import static main.java.com.company.model.product.ProductManager.*;
+import static main.java.com.company.model.product.ProductManager.deleteProduct;
+import static main.java.com.company.model.product.ProductManager.products;
 
 public class AdminMenu {
     private User user = new User();
@@ -57,13 +59,13 @@ public class AdminMenu {
         return choice;
     }
 
-    public static String inputReader() throws IOException{
+    public static String inputReader() throws IOException {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         try {
             return reader.readLine();
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
         if (reader != null) {
             input.close();
@@ -116,7 +118,7 @@ public class AdminMenu {
 
     public void showProducts() throws IOException {
         System.out.println("\t\t\tALL PRODUCTS");
-        if(products.isEmpty()) {
+        if (products.isEmpty()) {
             System.out.println("\nList of products is empty\n");
         }
         ProductManager.printAllProduct();
@@ -126,7 +128,7 @@ public class AdminMenu {
 
     public void showProductsByCategory() throws IOException {
         boolean iteration = true;
-        while(iteration) {
+        while (iteration) {
             System.out.println("\t\t\tALL CATEGORIES");
             Arrays.stream(Category.values()).forEach(System.out::println);
             System.out.print("\nEnter a category from the list: ");
@@ -134,7 +136,7 @@ public class AdminMenu {
             try {
                 Category category = Category.valueOf(categoryName);
                 ProductManager.printByCategory(category);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(WRONG_INPUT);
                 System.out.println("Press enter to continue");
                 continue;
@@ -145,18 +147,18 @@ public class AdminMenu {
         }
     }
 
-    public void addProduct() throws IOException{
+    public void addProduct() throws IOException {
         String inputName = "";
         Long inputCode = 0L;
         boolean nameIteration = true;
         boolean codeIteration = true;
 
         Nameloop:
-        while(nameIteration) {
+        while (nameIteration) {
             System.out.print("Name of product: ");
             inputName = inputReader();
             for (Map.Entry<Integer, Product> entry : products.entrySet()) {
-                if(inputName.equals(entry.getValue().getName())){
+                if (inputName.equals(entry.getValue().getName())) {
                     System.out.println("Product with such name already exist");
                     continue Nameloop;
                 }
@@ -165,11 +167,11 @@ public class AdminMenu {
         }
 
         Codeloop:
-        while(codeIteration) {
+        while (codeIteration) {
             System.out.print("Code of product: ");
             inputCode = Long.parseLong(inputReader());
             for (Map.Entry<Integer, Product> entry : products.entrySet()) {
-                if(inputCode.equals(entry.getValue().getProductСode())){
+                if (inputCode.equals(entry.getValue().getProductСode())) {
                     System.out.println("Product with such name already exist");
                     continue Codeloop;
                 }
@@ -194,7 +196,7 @@ public class AdminMenu {
         runSubMenuProduct();
     }
 
-    public void editProduct() throws IOException{
+    public void editProduct() throws IOException {
         System.out.print("Choose the product by ID: ");
         Integer id = Integer.parseInt(inputReader());
 

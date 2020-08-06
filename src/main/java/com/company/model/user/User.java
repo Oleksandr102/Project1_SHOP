@@ -7,6 +7,8 @@ import lombok.ToString;
 import main.java.com.company.model.user.enums.Rights;
 import main.java.com.company.model.user.enums.Status;
 
+import java.util.Objects;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -31,40 +33,20 @@ public class User {
         this.id = (int) Math.abs(Math.random() * 1000000);
     }
 
- /*   public User(String login, String password, String name, String seName) {
-        this.login = login;
-        this.password = password;
-        this.name = name;
-        this.seName = seName;
-    }
-
-    public void blockUser(String login) {
-        users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .forEach(user -> user.setStatus(Status.BLOCKED));
-    }
-
-    public void unblockUser(String login) {
-        users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .forEach(user -> user.setStatus(Status.ACTIVE));
-    }*/
-
- /*   @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getRights() == user.getRights() &&
+        return getId() == user.getId() &&
+                getRights() == user.getRights() &&
                 getStatus() == user.getStatus() &&
                 getLogin().equals(user.getLogin()) &&
-                getPassword().equals(user.getPassword()) &&
-                getName().equals(user.getName()) &&
-                Objects.equals(getSeName(), user.getSeName());
+                getPassword().equals(user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getName(), getSeName());
-    }*/
+        return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getId());
+    }
 }
