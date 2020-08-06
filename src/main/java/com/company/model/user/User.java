@@ -18,6 +18,8 @@ public class User {
     private Status status = Status.ACTIVE;
     private String login;
     private String password;
+    private String name;
+    private String seName;
     private int id;
 
     public User(String login, String password, Rights rights) {
