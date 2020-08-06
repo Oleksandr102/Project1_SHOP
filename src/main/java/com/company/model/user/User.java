@@ -1,11 +1,11 @@
-package main.java.com.company.model.user;
+package com.company.model.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.model.user.enums.Status;
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.Status;
 
 import java.util.Objects;
 

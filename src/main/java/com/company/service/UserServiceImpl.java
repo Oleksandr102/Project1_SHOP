@@ -1,9 +1,9 @@
-package main.java.com.company.service;
+package com.company.service;
 
-import main.java.com.company.service.interfaces.UserService;
-import main.java.com.company.model.user.User;
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.model.user.enums.Status;
+import com.company.service.interfaces.UserService;
+import com.company.model.user.User;
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.Status;
 
 import java.util.ArrayList;
 import java.util.Arrays;

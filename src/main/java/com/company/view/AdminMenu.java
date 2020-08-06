@@ -1,9 +1,9 @@
-package main.java.com.company.view;
+package com.company.view;
 
-import main.java.com.company.model.product.Category;
-import main.java.com.company.model.product.Product;
-import main.java.com.company.model.product.ProductManager;
-import main.java.com.company.model.user.User;
+import com.company.model.product.Category;
+import com.company.model.product.Product;
+import com.company.model.product.ProductManager;
+import com.company.model.user.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Map;
 
-import static main.java.com.company.model.product.ProductManager.deleteProduct;
-import static main.java.com.company.model.product.ProductManager.products;
+import static com.company.model.product.ProductManager.deleteProduct;
+import static com.company.model.product.ProductManager.products;
 
 public class AdminMenu {
     private User user = new User();
