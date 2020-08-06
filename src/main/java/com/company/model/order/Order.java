@@ -1,32 +1,62 @@
 package main.java.com.company.model.order;
 
+import main.java.com.company.model.Users;
 import main.java.com.company.model.product.Product;
 
+import java.util.List;
+
 public class Order {
-    private String productName;
-    private float productPrice;
+    private Integer idOrder;
+    private Users user;
+    private List<Product> product;
+    private Status status;
 
-    public String getProductName() {
-        return productName;
+    public Order(Integer idOrder, Users user, List<Product> product, Status status) {
+        this.idOrder = idOrder;
+        this.user = user;
+        this.product = product;
+        this.status = status;
     }
 
-    public void setProductName(String productName) {
-        this.productName = Product.getName();
+    public Integer getIdOrder() {
+        return idOrder;
     }
 
-    public float getProductPrice() {
-        return productPrice;
+    public void setIdOrder(Integer idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = Product.getPrice();
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "Order{" +
-                "productName='" + productName + '\'' +
-                ", productPrice=" + productPrice +
+                "idOrder=" + idOrder +
+                ", user=" + user +
+                ", product=" + product +
+                ", status=" + status +
                 '}';
     }
 }

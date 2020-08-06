@@ -1,14 +1,21 @@
-package main.java.com.company.service;
+/*
+package main.java.com.company.service.interfaces;
 
-enum Categories {
-    PHONE, TV, LAPTOP
-}
+import main.java.com.company.model.order.OrderService;
+import main.java.com.company.service.interfaces.OrderFromUser;
+>>>>>>> ae944301c9a23643166eb5620ce12dc0c1851bcf
 
+
+<<<<<<< HEAD
 public class UserOrder implements OrderFromUser {
+=======
+>>>>>>> 7dbdb290bc0e86e4b3430fbbc00d66ca94574125
+=======
+public abstract class UserOrder implements OrderFromUser {
     private String activeOrder;
     private Categories categories;
 
-    private ActiveOrders activeOrders;
+    private OrderService activeOrders;
 
 
     public UserOrder(String activeOrder, Categories categories) {
@@ -36,11 +43,13 @@ public class UserOrder implements OrderFromUser {
         activeOrders.getOrderslist().put(categories, activeOrder);
     }
 
+    @Override
+    public void searchByCategory(String category) {
+
+    }
+
     public void displayProducts() {
         System.out.println(activeOrders.getOrderslist());
     }
-
-    public void searchByCategory(Categories categories) {
-        activeOrders.getOrderslist().forEach((Categories, String) -> System.out.println(Categories + " " + String));
-    }
 }
+*/

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
 
-    static Map<Integer, Product> products = new HashMap<Integer, Product>();
+    public static Map<Integer, Product> products = new HashMap<Integer, Product>();
     static Integer productId = 0;
     static Product product;
 
@@ -49,20 +49,37 @@ public class ProductManager {
                 .build();
     }
 
-    public static void printALlProduct() {
+    public static Map<Integer, Product> getById(Integer idProduct) {
+        Map<Integer, Product> result = products
+                .entrySet().stream()
+                .filter(map -> map.getKey().equals(idProduct))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        return result;
+
+    }
+
+    public static void printAllProduct() {
         products.forEach((a, b) -> System.out.println("Id " + a + " " + b));
     }
 
     public static void printByCategory(Category inputCategory) {
         Map<Integer, Product> result = products
                 .entrySet().stream()
-
-                .filter(map->map.getValue().getCategory().equals(inputCategory))
-
+                .filter(map -> map.getValue().getCategory().equals(inputCategory))
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-
         result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
+    }
 
+    public static void printById(Integer id) {
+        Map<Integer, Product> result = products
+                .entrySet().stream()
+                .filter(map -> map.getKey().equals(id))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        result.forEach((a, b) -> System.out.println("Id " + a + " " + b));
+    }
+
+    public static void deleteProduct(Integer productId) {
+        products.remove(productId);
     }
 }
 

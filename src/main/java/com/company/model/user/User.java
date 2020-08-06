@@ -1,15 +1,15 @@
 package main.java.com.company.model.user;
 
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.model.user.enums.Status;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import main.java.com.company.model.user.enums.Rights;
+import main.java.com.company.model.user.enums.Status;
 
 import java.util.Objects;
 
-import static main.java.com.company.dao.users.UsersList.users;
-
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -20,33 +20,19 @@ public class User {
     private String password;
     private String name;
     private String seName;
+    private int id;
 
-    public User() {
-    }
-
-    public User(String login, String password, String name) {
+    public User(String login, String password, Rights rights) {
         this.login = login;
         this.password = password;
-        this.name = name;
+        this.rights = rights;
+        this.id = (int) Math.abs(Math.random() * 1000000);
     }
 
-    public User(String login, String password, String name, String seName) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.name = name;
-        this.seName = seName;
-    }
-
-    public void blockUser(String login) {
-        users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .forEach(user -> user.setStatus(Status.BLOCKED));
-    }
-
-    public void unblockUser(String login) {
-        users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .forEach(user -> user.setStatus(Status.ACTIVE));
+        this.id = (int) Math.abs(Math.random() * 1000000);
     }
 
     @Override
@@ -54,16 +40,15 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getRights() == user.getRights() &&
+        return getId() == user.getId() &&
+                getRights() == user.getRights() &&
                 getStatus() == user.getStatus() &&
                 getLogin().equals(user.getLogin()) &&
-                getPassword().equals(user.getPassword()) &&
-                getName().equals(user.getName()) &&
-                Objects.equals(getSeName(), user.getSeName());
+                getPassword().equals(user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getName(), getSeName());
+        return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getId());
     }
 }
