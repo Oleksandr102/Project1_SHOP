@@ -1,14 +1,14 @@
-package com.company.model.user;
+package main.java.com.company.model.user;
 
-import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.Status;
+import main.java.com.company.model.user.enums.Rights;
+import main.java.com.company.model.user.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Objects;
 
-import static com.company.dao.users.UsersList.users;
+import static main.java.com.company.dao.users.UsersList.users;
 
 @Getter
 @Setter
@@ -20,6 +20,9 @@ public class User {
     private String password;
     private String name;
     private String seName;
+
+    public User() {
+    }
 
     public User(String login, String password, String name) {
         this.login = login;
@@ -34,13 +37,13 @@ public class User {
         this.seName = seName;
     }
 
-    private void blockUser(String login) {
+    public void blockUser(String login) {
         users.stream()
                 .filter(user -> user.getLogin().equals(login))
                 .forEach(user -> user.setStatus(Status.BLOCKED));
     }
 
-    private void unblockUser(String login) {
+    public void unblockUser(String login) {
         users.stream()
                 .filter(user -> user.getLogin().equals(login))
                 .forEach(user -> user.setStatus(Status.ACTIVE));
