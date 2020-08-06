@@ -1,9 +1,9 @@
-package com.company.service;
+package main.java.com.company.service;
 
-import com.company.service.interfaces.UserService;
-import com.company.model.user.User;
-import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.Status;
+import main.java.com.company.model.user.User;
+import main.java.com.company.model.user.enums.Rights;
+import main.java.com.company.model.user.enums.Status;
+import main.java.com.company.service.interfaces.UserService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,14 +17,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void userAdd(String login, String password) {
-        users.add(new User(login, password));
+        int count = (int) users.stream()
+                .filter(u -> u.getLogin().equals(login))
+                .count();
+
+        if (count == 0) {
+            users.add(new User(login, password));
+        }
     }
 
     @Override
-    public void userShowByLogin(String login) {
-        users.stream()
+    public User userShowByLogin(String login) {
+        return users.stream()
                 .filter(u -> u.getLogin().equals(login))
-                .forEach(System.out::println);
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public User userCheckByPassword(String password) {
+        return users.stream()
+                .filter(u -> u.getPassword().equals(password))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
