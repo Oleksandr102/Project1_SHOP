@@ -3,7 +3,7 @@ package com.company.view;
 import com.company.model.product.Category;
 import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
-import com.company.model.user.User;
+import com.company.service.UserServiceImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import static com.company.model.product.ProductManager.deleteProduct;
 import static com.company.model.product.ProductManager.products;
 
 public class AdminMenu {
-    private User user = new User();
+    private UserServiceImpl userServiceImpl = new UserServiceImpl();
     private static final String PAUSE = "Press Enter to continue";
     private static final String MENU_LINE = "-------------------------------";
     private static final String WRONG_INPUT = "Wrong input, try one more time";
@@ -51,35 +51,44 @@ public class AdminMenu {
         }
     }
 
-    public int enterChoice() throws IOException {
+    public int enterChoice() {
         System.out.println(MENU_LINE);
         System.out.print("Enter a number, please: ");
-        int choice = Integer.parseInt(inputReader());
+        Integer choice = null;
+        choice = Integer.parseInt(inputReader());
+        if (choice == null) {
+            System.out.println("Enter only numbers!");
+            enterChoice();
+        }
         System.out.println(MENU_LINE);
         return choice;
     }
 
-    public static String inputReader() throws IOException {
+    public static String inputReader() {
         InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input);
+        BufferedReader bufferedReader = new BufferedReader(input);
         try {
-            return reader.readLine();
+            return bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (reader != null) {
-            input.close();
-            reader.close();
+        if (bufferedReader != null) {
+            try {
+                input.close();
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return "";
     }
 
-    public void pauseConsole() throws IOException {
+    public void pauseConsole() {
         System.out.println(PAUSE);
         inputReader();
     }
 
-    public void runAdminMenu() throws IOException {
+    public void runAdminMenu() {
         showMenuItems(adminMenuItems);
         switch (enterChoice()) {
             case 1 -> runSubMenuUserBlock();
@@ -96,27 +105,27 @@ public class AdminMenu {
         }
     }
 
-    public void blockUser() throws IOException {
+    public void blockUser() {
         System.out.println("\t\tUSER BLOCKING");
-        System.out.print("Enter user login for blocking: ");   //Better would be if block user was by ID
-        String login = inputReader();
-        user.blockUser(login);
-        System.out.println("User " + login + " was blocked\n" + MENU_LINE);
+        System.out.print("Enter user ID for blocking: ");   //Better would be if block user was by ID
+        int id = Integer.parseInt(inputReader());
+        userServiceImpl.userBlock(id);
+        System.out.println("User " + id + " was blocked\n" + MENU_LINE);
         pauseConsole();
         runSubMenuUserBlock();
     }
 
-    public void unblockUser() throws IOException {
+    public void unblockUser() {
         System.out.println("\t\tUSER BLOCKING");
-        System.out.print("Enter user login for blocking: ");   //Better would be if block user was by ID
-        String login = inputReader();
-        user.blockUser(login);
-        System.out.println("User " + login + " was blocked\n" + MENU_LINE);
+        System.out.print("Enter user ID for blocking: ");   //Better would be if block user was by ID
+        int id = Integer.parseInt(inputReader());
+        userServiceImpl.userUnblock(id);
+        System.out.println("User " + id + " was blocked\n" + MENU_LINE);
         pauseConsole();
         runSubMenuUserBlock();
     }
 
-    public void showProducts() throws IOException {
+    public void showProducts() {
         System.out.println("\t\t\tALL PRODUCTS");
         if (products.isEmpty()) {
             System.out.println("\nList of products is empty\n");
@@ -126,7 +135,7 @@ public class AdminMenu {
         runSubMenuProduct();
     }
 
-    public void showProductsByCategory() throws IOException {
+    public void showProductsByCategory() {
         boolean iteration = true;
         while (iteration) {
             System.out.println("\t\t\tALL CATEGORIES");
@@ -147,7 +156,7 @@ public class AdminMenu {
         }
     }
 
-    public void addProduct() throws IOException {
+    public void addProduct() {
         String inputName = "";
         Long inputCode = 0L;
         boolean nameIteration = true;
@@ -196,7 +205,7 @@ public class AdminMenu {
         runSubMenuProduct();
     }
 
-    public void editProduct() throws IOException {
+    public void editProduct() {
         System.out.print("Choose the product by ID: ");
         Integer id = Integer.parseInt(inputReader());
 
@@ -222,13 +231,13 @@ public class AdminMenu {
         runSubMenuProduct();
     }
 
-    public void deleteProductById() throws IOException {
+    public void deleteProductById() {
         System.out.print("Enter product ID for remove: ");
         int productId = Integer.parseInt(inputReader());
         deleteProduct(productId);
     }
 
-    public void runSubMenuUserBlock() throws IOException {
+    public void runSubMenuUserBlock() {
         showMenuItems(subMenuUserBlockItems);
         switch (enterChoice()) {
             case 1 -> blockUser();
@@ -242,7 +251,7 @@ public class AdminMenu {
         }
     }
 
-    public void runSubMenuProduct() throws IOException {
+    public void runSubMenuProduct() {
         showMenuItems(subMenuProductItems);
         switch (enterChoice()) {
             case 1 -> showProducts();
