@@ -3,6 +3,7 @@ package main.java.com.company.service;
 import main.java.com.company.model.user.User;
 import main.java.com.company.model.user.enums.Rights;
 import main.java.com.company.model.user.enums.Status;
+import main.java.com.company.service.exceptions.LoginAlreadyInUseException;
 import main.java.com.company.service.interfaces.UserService;
 
 import java.util.ArrayList;
@@ -16,13 +17,15 @@ public class UserServiceImpl implements UserService {
     ));
 
     @Override
-    public void userAdd(String login, String password) {
+    public void userAdd(String login, String password) throws LoginAlreadyInUseException {
         int count = (int) users.stream()
                 .filter(u -> u.getLogin().equals(login))
                 .count();
 
         if (count == 0) {
             users.add(new User(login, password));
+        } else {
+            throw new LoginAlreadyInUseException("This login is already in use!");
         }
     }
 
