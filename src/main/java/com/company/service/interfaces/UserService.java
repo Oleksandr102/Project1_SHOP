@@ -1,10 +1,10 @@
 package com.company.service.interfaces;
 
+import main.java.com.company.authorization.exception.LoginAlreadyInUseException;
 import main.java.com.company.model.user.User;
-import main.java.com.company.service.exceptions.LoginAlreadyInUseException;
 
 public interface UserService {
-    void userAdd(String login, String password) throws LoginAlreadyInUseException;
+    void userAdd(String login) throws LoginAlreadyInUseException;
 
     User userShowByLogin(String login);
 
