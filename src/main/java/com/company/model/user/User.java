@@ -14,7 +14,6 @@ import java.util.Objects;
 @Setter
 @ToString
 public class User {
-
     private Rights rights = Rights.USER;
     private UserStatus status = UserStatus.ACTIVE;
     private String login;
@@ -22,7 +21,6 @@ public class User {
     private String name;
     private String seName;
     private int id;
-
 
     public User(String login, String password, Rights rights) {
         this.login = login;
@@ -49,9 +47,6 @@ public class User {
                 getPassword().equals(user.getPassword());
     }
 
-    public String showUser(){
-        return getLogin();
-    }
     @Override
     public int hashCode() {
         return Objects.hash(getRights(), getStatus(), getLogin(), getPassword(), getId());

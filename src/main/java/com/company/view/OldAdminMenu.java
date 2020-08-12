@@ -1,9 +1,9 @@
+/*
 package com.company.view;
 
-import com.company.model.order.Order;
 import com.company.model.order.OrderService;
+import com.company.model.order.OrderStatus;
 import com.company.model.product.*;
-import com.company.model.user.User;
 import com.company.service.UserServiceImpl;
 import com.company.authorization.view.impl.AuthorizationMenuImpl;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 import static com.company.model.product.ProductManager.products;
 
 
-public class AdminMenu {
+public class AdminMenu2 {
     private UserServiceImpl userServiceImpl = new UserServiceImpl();
     private OrderService orderService = new OrderService();
     private static final String PAUSE = "Press Enter to continue";
@@ -47,18 +47,18 @@ public class AdminMenu {
             "6. BACK",
             "0. EXIT"
     };
-
-    private final String[] subMenuUserOrder = {
-            "\t\tUSER ORDER",
-            "1. Show user order",
-            "2. Confirm/unconfirm order",
-            "3. Back",
+    private final String[] subMenuUserOrderItems = {
+            "\t\tUSER ORDER MENU",
+            "1. Show all orders",
+            "2. Show order by users",
+            "3. Confirm/unconfirm order",
+            "4. Back",
             "0. Exit"
     };
 
-    public void showMenuItems(String[] menu) {
-        for (String menuItem : menu) {
-            System.out.println(menuItem);
+    public void showMenuItems(String[] menuItems) {
+        for (String item : menuItems) {
+            System.out.println(item);
         }
     }
 
@@ -94,61 +94,10 @@ public class AdminMenu {
         return "";
     }
 
-    public void pauseConsole() {
+    public void pauseMenu() {
         System.out.println(PAUSE);
         inputReader();
     }
-
-    public void runAdminMenu() {
-        showMenuItems(adminMenuItems);
-        switch (enterChoice()) {
-            case 1 -> runSubMenuUserBlock();
-            case 2 -> System.out.println("Confirm/unconfirm user order");
-            case 3 -> runSubMenuProduct();
-            case 4 -> new AuthorizationMenuImpl().authorization();
-            case 0 -> System.exit(0);
-            default -> {
-                System.out.println(WRONG_INPUT);
-                runAdminMenu();
-            }
-        }
-    }
-
-    public void runSubMenuUserOrder() {
-        showMenuItems(subMenuUserOrder);
-        switch (enterChoice()) {
-            case 1 -> {
-                // Show all orders
-                System.out.println("\t\t\tAll orders");
-                orderService.showAllOrders();
-                pauseConsole();
-                runSubMenuUserOrder();
-            }
-            case 2 -> {
-                // Show user order
-
-            }
-            case 3 -> {
-
-                System.out.println("Confirm/unconfirm user order");
-
-            }
-            case 4 -> runAdminMenu();
-            case 0 -> System.exit(0);
-            default -> {
-                System.out.println(WRONG_INPUT);
-                runSubMenuUserOrder();
-            }
-        }
-    }
-
-/*    public void showUserOrder() {
-        System.out.println("Enter user login");
-        String userLogin = inputReader();
-        orderService.showOrdersByUser(userLogin);
-        pauseConsole();
-        runSubMenuUserOrder();
-    }*/
 
     public void blockUser() {
         System.out.println("\t\tUSER BLOCKING");
@@ -156,7 +105,7 @@ public class AdminMenu {
         int id = Integer.parseInt(inputReader());
         userServiceImpl.userBlock(id);
         System.out.println("User " + id + " was blocked\n" + MENU_LINE);
-        pauseConsole();
+        pauseMenu();
         runSubMenuUserBlock();
     }
 
@@ -166,7 +115,7 @@ public class AdminMenu {
         int id = Integer.parseInt(inputReader());
         userServiceImpl.userUnblock(id);
         System.out.println("User " + id + " was blocked\n" + MENU_LINE);
-        pauseConsole();
+        pauseMenu();
         runSubMenuUserBlock();
     }
 
@@ -176,7 +125,7 @@ public class AdminMenu {
             System.out.println("\nList of products is empty\n");
         }
         ProductManager.printAllProduct();
-        pauseConsole();
+        pauseMenu();
         runSubMenuProduct();
     }
 
@@ -196,7 +145,7 @@ public class AdminMenu {
                 continue;
             }
             iteration = false;
-            pauseConsole();
+            pauseMenu();
             runSubMenuProduct();
         }
     }
@@ -280,7 +229,6 @@ public class AdminMenu {
         System.out.print("Enter product ID for remove: ");
         int productId = Integer.parseInt(inputReader());
         ProductManager.deleteProduct(productId);
-        runSubMenuProduct();
     }
 
     public void runSubMenuUserBlock() {
@@ -293,6 +241,51 @@ public class AdminMenu {
             default -> {
                 System.out.println(WRONG_INPUT);
                 runSubMenuUserBlock();
+            }
+        }
+    }
+
+    public void runSubMenuUserOrder() {
+        showMenuItems(subMenuUserOrderItems);
+        switch (enterChoice()) {
+            case 1 -> {
+                System.out.println("All orders");
+                orderService.showAllOrders();
+                pauseMenu();
+                runSubMenuUserOrder();
+            }
+            case 2 -> {
+                System.out.println("Enter user login");
+                String userLogin = inputReader();
+                orderService.showOrdersByUser(userLogin);
+                pauseMenu();
+                runSubMenuUserOrder();
+            }
+            case 3 -> {
+                System.out.println("Choose user order");
+                System.out.println("Enter user login");
+                String userLogin = inputReader();
+                orderService.showOrdersByUser(userLogin);
+                System.out.println("Choose status: ");
+                System.out.println("1. Active");
+                System.out.println("2. Blocked");
+                switch (enterChoice()) {
+                    case 1 -> orderService.confirmOrder(userLogin, OrderStatus.ACTIVE);
+                    case 2 -> orderService.confirmOrder(userLogin, OrderStatus.BLOCKED);
+                    default -> {
+                        System.out.println("Wrong input!");
+                        runSubMenuUserOrder();
+                    }
+                }
+                orderService.showOrdersByUser(userLogin);
+                pauseMenu();
+                runSubMenuUserOrder();
+            }
+            case 4 -> runAdminMenu();
+            case 0 -> System.exit(0);
+            default -> {
+                System.out.println(WRONG_INPUT);
+                runSubMenuUserOrder();
             }
         }
     }
@@ -313,4 +306,20 @@ public class AdminMenu {
             }
         }
     }
+
+    public void runAdminMenu() {
+        showMenuItems(adminMenuItems);
+        switch (enterChoice()) {
+            case 1 -> runSubMenuUserBlock();
+            case 2 -> runSubMenuUserOrder();
+            case 3 -> runSubMenuProduct();
+            case 4 -> new AuthorizationMenuImpl().authorization();
+            case 0 -> System.exit(0);
+            default -> {
+                System.out.println(WRONG_INPUT);
+                runAdminMenu();
+            }
+        }
+    }
 }
+*/

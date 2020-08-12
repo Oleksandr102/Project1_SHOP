@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
 
-    public static Map<Integer, Product> products = new HashMap<Integer, com.company.model.product.Product>();
+    public static Map<Integer, Product> products = new HashMap<Integer, Product>();
     static Integer productId = 0;
     static Product product;
 
@@ -32,7 +32,6 @@ public class ProductManager {
                         .setProducer(producer)
                         .setPrice(price)
                         .build());
-
     }
 
     public static void editProduct(Integer productId, String name, Long productCode, Category category,
@@ -45,7 +44,6 @@ public class ProductManager {
                 .setProducer(producer)
                 .setPrice(price)
                 .build();
-
         products.put(productId, product);
     }
 
