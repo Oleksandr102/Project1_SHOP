@@ -1,17 +1,17 @@
 package main.java.com.company.model.order;
 
-import main.java.com.company.model.Users;
+import main.java.com.company.model.user.User;
 import main.java.com.company.model.product.Product;
 
 import java.util.List;
 
 public class Order {
     private Integer idOrder;
-    private Users user;
+    private User user;
     private List<Product> product;
     private Status status;
 
-    public Order(Integer idOrder, Users user, List<Product> product, Status status) {
+    public Order(Integer idOrder, User user, List<Product> product, Status status) {
         this.idOrder = idOrder;
         this.user = user;
         this.product = product;
@@ -26,11 +26,11 @@ public class Order {
         this.idOrder = idOrder;
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
