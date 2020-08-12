@@ -1,4 +1,4 @@
-package com.company.authorization.config;
+package com.company.config;
 
 import lombok.SneakyThrows;
 
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class Scanner {
     @SneakyThrows
-    public static String ReadString() {
+    public static String readString() {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(input);
         try {
