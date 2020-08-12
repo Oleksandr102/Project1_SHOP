@@ -24,7 +24,6 @@ public class ProductManager {
 
     public static void addProduct(String name, Long productCode, Category category,
                                   String producer, Float price) {
-
         products.put(productId++,
                 product = new ProductBuilder()
                         .setName(name)
@@ -39,7 +38,6 @@ public class ProductManager {
     public static void editProduct(Integer productId, String name, Long productCode, Category category,
                                    String producer, Float price) {
         product = products.get(productId);
-
         product = new ProductBuilder()
                 .setName(name)
                 .setProductCode(productCode)
@@ -58,6 +56,10 @@ public class ProductManager {
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
         return result;
 
+    }
+
+    public static Product getProductById(Integer idProduct) {
+        return products.get(idProduct);
     }
 
     public static void printAllProduct() {
