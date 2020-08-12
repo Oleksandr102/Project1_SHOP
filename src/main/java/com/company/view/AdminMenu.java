@@ -1,9 +1,8 @@
 package com.company.view;
 
-import com.company.model.product.Category;
-import com.company.model.product.Product;
-import com.company.model.product.ProductManager;
+import com.company.model.product.*;
 import com.company.service.UserServiceImpl;
+import com.company.authorization.view.impl.AuthorizationMenuImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +10,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Map;
 
-import static com.company.model.product.ProductManager.deleteProduct;
 import static com.company.model.product.ProductManager.products;
+
 
 public class AdminMenu {
     private UserServiceImpl userServiceImpl = new UserServiceImpl();
@@ -24,7 +23,7 @@ public class AdminMenu {
             "1. BLOCK/UNBLOCK USER",
             "2. CONFIRM/UNCONFIRM USER ORDER (NOT ACTIVE)",
             "3. PRODUCT MENU",
-            "4. LOGOUT (NOT ACTIVE)",
+            "4. LOGOUT",
             "0. EXIT"
     };
     private final String[] subMenuUserBlockItems = {
@@ -94,9 +93,7 @@ public class AdminMenu {
             case 1 -> runSubMenuUserBlock();
             case 2 -> System.out.println("Confirm/unconfirm user order");
             case 3 -> runSubMenuProduct();
-            case 4 -> {
-                // TODO: authorization method from Authorization class
-            }
+            case 4 -> new AuthorizationMenuImpl().authorization();
             case 0 -> System.exit(0);
             default -> {
                 System.out.println(WRONG_INPUT);
@@ -234,7 +231,7 @@ public class AdminMenu {
     public void deleteProductById() {
         System.out.print("Enter product ID for remove: ");
         int productId = Integer.parseInt(inputReader());
-        deleteProduct(productId);
+        ProductManager.deleteProduct(productId);
     }
 
     public void runSubMenuUserBlock() {
