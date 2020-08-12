@@ -1,4 +1,4 @@
-package com.company.authorization.exception;
+package com.company.exception;
 
 public class LoginAlreadyInUseException extends Exception {
     public LoginAlreadyInUseException(String s) {

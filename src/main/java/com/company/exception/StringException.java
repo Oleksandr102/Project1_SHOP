@@ -1,4 +1,4 @@
-package com.company.authorization.exception;
+package com.company.exception;
 
 public class StringException extends Exception{
     public StringException(String s) {

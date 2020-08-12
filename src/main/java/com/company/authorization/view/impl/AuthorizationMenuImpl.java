@@ -1,7 +1,7 @@
 package com.company.authorization.view.impl;
 
 import lombok.SneakyThrows;
-import com.company.authorization.exception.StringException;
+import com.company.exception.StringException;
 import com.company.authorization.view.AuthorizationMenu;
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;

@@ -4,7 +4,7 @@ import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
 import com.company.model.user.enums.UserStatus;
 import com.company.service.interfaces.UserService;
-import com.company.service.exceptions.LoginAlreadyInUseException;
+import com.company.exception.LoginAlreadyInUseException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
