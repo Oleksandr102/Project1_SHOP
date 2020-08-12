@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.company.authorization.config.Scanner.ReadString;
+import static com.company.config.Scanner.readString;
 
 public class UserServiceImpl implements UserService {
     private static List<User> users = new ArrayList<>(Arrays.asList(
@@ -27,11 +27,11 @@ public class UserServiceImpl implements UserService {
         if (count == 0) {
             user.setLogin(login);
             System.out.print("Enter Password: ");
-            user.setPassword(ReadString());
+            user.setPassword(readString());
             System.out.print("Enter name:     ");
-            user.setName(ReadString());
+            user.setName(readString());
             System.out.print("Enter seName:   ");
-            user.setSeName(ReadString());
+            user.setSeName(readString());
             user.setId((int) Math.abs(Math.random() * 1000000));
             users.add(user);
             System.out.println("User saved");

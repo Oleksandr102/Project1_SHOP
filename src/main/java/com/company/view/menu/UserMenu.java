@@ -1,4 +1,4 @@
-package com.company.view;
+package com.company.view.menu;
 
 
 import com.company.model.product.Category;
