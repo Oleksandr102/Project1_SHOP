@@ -1,6 +1,6 @@
-package main.java.com.company.service.interfaces;
+package com.company.service.interfaces;
 
-import main.java.com.company.model.user.User;
+import com.company.model.user.User;
 import main.java.com.company.service.exceptions.LoginAlreadyInUseException;
 
 public interface UserService {

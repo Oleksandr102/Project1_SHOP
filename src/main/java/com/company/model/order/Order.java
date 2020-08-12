@@ -1,7 +1,7 @@
-package main.java.com.company.model.order;
+package com.company.model.order;
 
-import main.java.com.company.model.user.User;
-import main.java.com.company.model.product.Product;
+import com.company.model.product.Product;
+import com.company.model.user.User;
 
 import java.util.List;
 
