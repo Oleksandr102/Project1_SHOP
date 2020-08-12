@@ -1,6 +1,8 @@
 package com.company.authorization.view;
 
+import com.company.model.user.User;
+
 public interface AuthorizationMenu {
-    void login();
+    User login();
     void password();
 }
