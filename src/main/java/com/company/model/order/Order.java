@@ -9,9 +9,9 @@ public class Order {
     private Integer idOrder;
     private User user;
     private List<Product> product;
-    private Status status;
+    private OrderStatus status;
 
-    public Order(Integer idOrder, User user, List<Product> product, Status status) {
+    public Order(Integer idOrder, User user, List<Product> product, OrderStatus status) {
         this.idOrder = idOrder;
         this.user = user;
         this.product = product;
@@ -42,11 +42,11 @@ public class Order {
         this.product = product;
     }
 
-    public Status getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

@@ -15,7 +15,7 @@ public class OrderService {
     private static List<Product> orderResult;
     private static Integer idOrder = 0;
     private static Float price = 0f;
-    private static Status status = Status.ACTIVE;
+    private static OrderStatus status = OrderStatus.ACTIVE;
 
     public static void addOrder(User users, Product product) { // заменить на продукт на id
         if (orders != null && !orders.isEmpty()) {
@@ -49,7 +49,7 @@ public class OrderService {
         System.out.println(resultMap);
     }
 
-    public static Map<Integer, Product> confirmOrder(User users, Status status) {
+    public static Map<Integer, Product> confirmOrder(User users, OrderStatus status) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
                 orderResult = orders.get(i).getProduct();
