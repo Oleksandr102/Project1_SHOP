@@ -43,7 +43,7 @@ public class ProductMenu implements Menu {
             Category category = Category.valueOf(categoryName);
             ProductManager.printByCategory(category);
         } catch (Exception e) {
-            showWrongInputMassage();
+            System.out.println("Wrong input!");
             showProductsByCategory();
         }
         pauseMenu();
