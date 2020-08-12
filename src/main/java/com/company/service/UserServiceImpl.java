@@ -1,18 +1,10 @@
 package com.company.service;
 
-<<<<<<< HEAD
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
 import com.company.model.user.enums.UserStatus;
 import com.company.service.interfaces.UserService;
 import com.company.service.exceptions.LoginAlreadyInUseException;
-=======
-import com.company.authorization.exception.LoginAlreadyInUseException;
-import com.company.model.user.User;
-import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.Status;
-import com.company.service.interfaces.UserService;
->>>>>>> c04c6916785d82eabd18e7f1589d5e5f7218c847
 
 import java.util.ArrayList;
 import java.util.Arrays;
