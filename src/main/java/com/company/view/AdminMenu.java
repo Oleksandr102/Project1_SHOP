@@ -1,6 +1,7 @@
 package com.company.view;
 
 import com.company.model.product.*;
+import com.company.model.user.User;
 import com.company.service.UserServiceImpl;
 import com.company.authorization.view.impl.AuthorizationMenuImpl;
 

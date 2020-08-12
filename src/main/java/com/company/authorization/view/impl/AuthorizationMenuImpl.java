@@ -45,7 +45,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
     @Override
     public void login() {
         System.out.print("Enter login: ");
-        User user = userService.userShowByLogin(ReadString());
+        User user = curUser();
         if (user.getRights().equals(Rights.ADMIN)) {
             password();
             new AdminMenu().runAdminMenu();
@@ -53,6 +53,11 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
             password();
             new UserMenu().dropMenu();
         }
+    }
+
+    public User curUser() {
+        User user = userService.userShowByLogin(ReadString());
+        return user;
     }
 
     @Override
