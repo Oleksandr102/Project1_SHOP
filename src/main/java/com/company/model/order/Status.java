@@ -1,4 +1,4 @@
-package main.java.com.company.model.order;
+package com.company.model.order;
 
 public enum Status {
     ACTIVE,

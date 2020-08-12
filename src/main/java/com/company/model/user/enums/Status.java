@@ -1,4 +1,4 @@
-package main.java.com.company.model.user.enums;
+package com.company.model.user.enums;
 
 public enum Status {
     ACTIVE,

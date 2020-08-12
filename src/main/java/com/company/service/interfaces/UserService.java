@@ -1,4 +1,4 @@
-package main.java.com.company.service.interfaces;
+package com.company.service.interfaces;
 
 import main.java.com.company.authorization.exception.LoginAlreadyInUseException;
 import main.java.com.company.model.user.User;

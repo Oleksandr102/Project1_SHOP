@@ -1,4 +1,4 @@
-package main.java.com.company.model.product;
+package com.company.model.product;
 
 import java.util.HashMap;
 import java.util.Map;

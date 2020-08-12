@@ -1,4 +1,4 @@
-package main.java.com.company.service;
+package com.company.service;
 /*
 
 import main.java.com.company.model;

@@ -1,4 +1,4 @@
-package main.java.com.company.model.product;
+package com.company.model.product;
 
 public class ProductBuilder implements IBuilder {
     private String name;

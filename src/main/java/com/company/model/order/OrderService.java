@@ -1,7 +1,7 @@
-package main.java.com.company.model.order;
+package com.company.model.order;
 
-import main.java.com.company.model.Users;
-import main.java.com.company.model.product.Product;
+import com.company.model.product.Product;
+import com.company.model.user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class OrderService {
     private static Float price = 0f;
     private static Status status = Status.ACTIVE;
 
-    public static void addOrder(Users users, Product product) { // заменить на продукт на id
+    public static void addOrder(User users, Product product) { // заменить на продукт на id
         if (orders != null && !orders.isEmpty()) {
             orders.forEach(order -> {
                 if (order.getUser().equals(users)) {
@@ -35,7 +35,7 @@ public class OrderService {
         }
     }
 
-    public static void deleteOrder(Users users, Integer idOrder) {
+    public static void deleteOrder(User users, Integer idOrder) {
         System.out.println("You deleted " + idOrder);
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
@@ -49,7 +49,7 @@ public class OrderService {
         System.out.println(resultMap);
     }
 
-    public static Map<Integer, Product> confirmOrder(Users users, Status status) {
+    public static Map<Integer, Product> confirmOrder(User users, Status status) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
                 orderResult = orders.get(i).getProduct();
@@ -63,7 +63,7 @@ public class OrderService {
         return resultMap;
     }
 
-    public static Float countSum(Users users) {
+    public static Float countSum(User users) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
                 resultList = orders.get(i).getProduct();
@@ -75,7 +75,7 @@ public class OrderService {
         return price;
     }
 
-    public static void showOrdersByUser(Users user) {
+    public static void showOrdersByUser(User user) {
         System.out.println("Your orders: ");
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(user)) {
