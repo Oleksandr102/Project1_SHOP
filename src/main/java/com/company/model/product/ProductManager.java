@@ -10,7 +10,7 @@ public class ProductManager {
     static Integer productId = 0;
     static Product product;
 
-    {
+    static {
         ProductManager.addProduct("VHS", 123456L, Category.AUDIO_VIDEO, "Sony", 120.0f);
         ProductManager.addProduct("Ipnone", 53264L, Category.MOBILE, "Apple", 499.99f);
         ProductManager.addProduct("TV", 325655L, Category.TELEVISION, "Samsung", 800.00f);
@@ -47,6 +47,8 @@ public class ProductManager {
                 .setProducer(producer)
                 .setPrice(price)
                 .build();
+
+        products.put(productId, product);
     }
 
     public static Map<Integer, Product> getById(Integer idProduct) {
