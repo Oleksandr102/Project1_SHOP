@@ -7,10 +7,10 @@ import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
 import com.company.service.UserServiceImpl;
 import com.company.service.interfaces.UserService;
-import com.company.view.AdminMenu;
-import com.company.view.UserMenu;
+import com.company.view.menu.AdminMenu;
+import com.company.view.menu.UserMenu;
 
-import static com.company.authorization.config.Scanner.ReadString;
+import static com.company.config.Scanner.readString;
 
 public class AuthorizationMenuImpl implements AuthorizationMenu {
     private static UserService userService = new UserServiceImpl();
@@ -22,7 +22,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
         while (true) {
             System.out.println("1-Registration 2-Login 3-Exit");
             try {
-                count = Integer.parseInt(ReadString());
+                count = Integer.parseInt(readString());
             } catch (NumberFormatException e) {
                 e.getMessage();
                 throw new StringException("Input number");
@@ -30,7 +30,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
             switch (count) {
                 case 1 -> {
                     System.out.print("Enter login:    ");
-                    new UserServiceImpl().userAdd(ReadString());
+                    new UserServiceImpl().userAdd(readString());
                 }
                 case 2 -> login();
                 case 3 -> {
@@ -45,10 +45,10 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
     @Override
     public void login() {
         System.out.print("Enter login: ");
-        User user = userService.userShowByLogin(ReadString());
+        User user = userService.userShowByLogin(readString());
         if (user.getRights().equals(Rights.ADMIN)) {
             password();
-            new AdminMenu().runAdminMenu();
+            new AdminMenu().dropMenu();
         } else {
             password();
             new UserMenu().dropMenu();
@@ -58,7 +58,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
     @Override
     public void password() {
         System.out.print("Password:    ");
-        User user = userService.userCheckByPassword(ReadString());
+        User user = userService.userCheckByPassword(readString());
         if (user.getPassword() != null) {
             System.out.println("login:" + user);
         } else {
