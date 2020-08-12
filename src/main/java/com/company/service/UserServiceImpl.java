@@ -1,16 +1,16 @@
-package main.java.com.company.service;
+package com.company.service;
 
-import main.java.com.company.authorization.exception.LoginAlreadyInUseException;
-import main.java.com.company.model.user.User;
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.model.user.enums.Status;
-import main.java.com.company.service.interfaces.UserService;
+import com.company.authorization.exception.LoginAlreadyInUseException;
+import com.company.model.user.User;
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.Status;
+import com.company.service.interfaces.UserService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static main.java.com.company.authorization.config.Scanner.ReadString;
+import static com.company.authorization.config.Scanner.ReadString;
 
 public class UserServiceImpl implements UserService {
     private static List<User> users = new ArrayList<>(Arrays.asList(

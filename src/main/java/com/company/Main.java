@@ -1,6 +1,6 @@
-package main.java.com.company;
+package com.company;
 
-import main.java.com.company.authorization.view.impl.AuthorizationMenuImpl;
+import com.company.authorization.view.impl.AuthorizationMenuImpl;
 
 public class Main {
 

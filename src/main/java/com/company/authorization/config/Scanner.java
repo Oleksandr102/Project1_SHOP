@@ -1,4 +1,4 @@
-package main.java.com.company.authorization.config;
+package com.company.authorization.config;
 
 import lombok.SneakyThrows;
 

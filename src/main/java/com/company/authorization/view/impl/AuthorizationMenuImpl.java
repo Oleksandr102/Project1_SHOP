@@ -1,16 +1,16 @@
-package main.java.com.company.authorization.view.impl;
+package com.company.authorization.view.impl;
 
 import lombok.SneakyThrows;
-import main.java.com.company.authorization.exception.StringException;
-import main.java.com.company.authorization.view.AuthorizationMenu;
-import main.java.com.company.model.user.User;
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.service.UserServiceImpl;
-import main.java.com.company.service.interfaces.UserService;
-import main.java.com.company.view.AdminMenu;
-import main.java.com.company.view.UserMenu;
+import com.company.authorization.exception.StringException;
+import com.company.authorization.view.AuthorizationMenu;
+import com.company.model.user.User;
+import com.company.model.user.enums.Rights;
+import com.company.service.UserServiceImpl;
+import com.company.service.interfaces.UserService;
+import com.company.view.AdminMenu;
+import com.company.view.UserMenu;
 
-import static main.java.com.company.authorization.config.Scanner.ReadString;
+import static com.company.authorization.config.Scanner.ReadString;
 
 public class AuthorizationMenuImpl implements AuthorizationMenu {
     private static UserService userService = new UserServiceImpl();
