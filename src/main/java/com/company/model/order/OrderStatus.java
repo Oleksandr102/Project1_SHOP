@@ -1,6 +1,6 @@
 package com.company.model.order;
 
-public enum Status {
+public enum OrderStatus {
     ACTIVE,
     BLOCKED;
 }

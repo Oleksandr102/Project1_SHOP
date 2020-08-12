@@ -1,6 +1,6 @@
 package com.company.model.user.enums;
 
-public enum Status {
+public enum UserStatus {
     ACTIVE,
     BLOCKED
 }

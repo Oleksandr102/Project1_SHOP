@@ -3,7 +3,7 @@ package com.company.service;
 import com.company.authorization.exception.LoginAlreadyInUseException;
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.Status;
+import com.company.model.user.enums.UserStatus;
 import com.company.service.interfaces.UserService;
 
 import java.util.ArrayList;
@@ -67,13 +67,13 @@ public class UserServiceImpl implements UserService {
     public void userBlock(int id) {
         users.stream()
                 .filter(u -> u.getId() == (id))
-                .forEach(u -> u.setStatus(Status.BLOCKED));
+                .forEach(u -> u.setStatus(UserStatus.BLOCKED));
     }
 
     @Override
     public void userUnblock(int id) {
         users.stream()
                 .filter(u -> u.getId() == (id))
-                .forEach(u -> u.setStatus(Status.ACTIVE));
+                .forEach(u -> u.setStatus(UserStatus.ACTIVE));
     }
 }

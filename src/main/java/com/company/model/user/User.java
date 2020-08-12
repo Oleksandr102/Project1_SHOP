@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.Status;
+import com.company.model.user.enums.UserStatus;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ import java.util.Objects;
 @ToString
 public class User {
     private Rights rights = Rights.USER;
-    private Status status = Status.ACTIVE;
+    private UserStatus status = UserStatus.ACTIVE;
     private String login;
     private String password;
     private String name;
