@@ -1,5 +1,7 @@
 package com.company.view;
 
+import com.company.model.order.Order;
+import com.company.model.order.OrderService;
 import com.company.model.product.*;
 import com.company.model.user.User;
 import com.company.service.UserServiceImpl;
@@ -16,6 +18,7 @@ import static com.company.model.product.ProductManager.products;
 
 public class AdminMenu {
     private UserServiceImpl userServiceImpl = new UserServiceImpl();
+    private OrderService orderService = new OrderService();
     private static final String PAUSE = "Press Enter to continue";
     private static final String MENU_LINE = "-------------------------------";
     private static final String WRONG_INPUT = "Wrong input, try one more time";
@@ -43,6 +46,14 @@ public class AdminMenu {
             "5. EDIT PRODUCT",
             "6. BACK",
             "0. EXIT"
+    };
+
+    private final String[] subMenuUserOrder = {
+            "\t\tUSER ORDER",
+            "1. Show user order",
+            "2. Confirm/unconfirm order",
+            "3. Back",
+            "0. Exit"
     };
 
     public void showMenuItems(String[] menu) {
@@ -102,6 +113,42 @@ public class AdminMenu {
             }
         }
     }
+
+    public void runSubMenuUserOrder() {
+        showMenuItems(subMenuUserOrder);
+        switch (enterChoice()) {
+            case 1 -> {
+                // Show all orders
+                System.out.println("\t\t\tAll orders");
+                orderService.showAllOrders();
+                pauseConsole();
+                runSubMenuUserOrder();
+            }
+            case 2 -> {
+                // Show user order
+
+            }
+            case 3 -> {
+
+                System.out.println("Confirm/unconfirm user order");
+
+            }
+            case 4 -> runAdminMenu();
+            case 0 -> System.exit(0);
+            default -> {
+                System.out.println(WRONG_INPUT);
+                runSubMenuUserOrder();
+            }
+        }
+    }
+
+/*    public void showUserOrder() {
+        System.out.println("Enter user login");
+        String userLogin = inputReader();
+        orderService.showOrdersByUser(userLogin);
+        pauseConsole();
+        runSubMenuUserOrder();
+    }*/
 
     public void blockUser() {
         System.out.println("\t\tUSER BLOCKING");
@@ -233,6 +280,7 @@ public class AdminMenu {
         System.out.print("Enter product ID for remove: ");
         int productId = Integer.parseInt(inputReader());
         ProductManager.deleteProduct(productId);
+        runSubMenuProduct();
     }
 
     public void runSubMenuUserBlock() {

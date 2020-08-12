@@ -47,6 +47,8 @@ public class ProductManager {
                 .setProducer(producer)
                 .setPrice(price)
                 .build();
+
+        products.put(productId, product);
     }
 
     public static Map<Integer, Product> getById(Integer idProduct) {
