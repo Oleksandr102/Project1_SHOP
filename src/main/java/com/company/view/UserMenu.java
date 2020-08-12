@@ -16,7 +16,7 @@ import static com.company.view.AdminMenu.inputReader;
 
 public class UserMenu {
     Scanner scr = new Scanner(System.in);
-    String currentUser = new User().showUser();
+    User currentUser = new AuthorizationMenuImpl().login();
     private static final String PAUSE = "Press Enter to continue";
 
     private final String[] menu = {
@@ -29,6 +29,7 @@ public class UserMenu {
 
     public void dropMenu() {
         System.out.println(currentUser);
+        System.out.println("userMenu");
 //        while (true) {
 //            showMenu();
 //            System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");

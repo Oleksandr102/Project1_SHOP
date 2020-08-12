@@ -32,7 +32,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
                     System.out.print("Enter login:    ");
                     new UserServiceImpl().userAdd(ReadString());
                 }
-                case 2 -> login();
+                case 2 -> new UserMenu().dropMenu();
                 case 3 -> {
                     System.out.println("Exit");
                     break loop;
@@ -43,20 +43,15 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
 
     @SneakyThrows
     @Override
-    public void login() {
+    public User login() {
         System.out.print("Enter login: ");
-        User user = curUser();
+        User user = userService.userShowByLogin(ReadString());
         if (user.getRights().equals(Rights.ADMIN)) {
             password();
             new AdminMenu().runAdminMenu();
         } else {
             password();
-            new UserMenu().dropMenu();
         }
-    }
-
-    public User curUser() {
-        User user = userService.userShowByLogin(ReadString());
         return user;
     }
 
