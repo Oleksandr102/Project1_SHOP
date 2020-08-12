@@ -1,16 +1,16 @@
-package main.java.com.company.service;
+package com.company.service;
 
-import main.java.com.company.authorization.exception.LoginAlreadyInUseException;
-import main.java.com.company.model.user.User;
-import main.java.com.company.model.user.enums.Rights;
-import main.java.com.company.model.user.enums.Status;
-import main.java.com.company.service.interfaces.UserService;
+import com.company.model.user.User;
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.UserStatus;
+import com.company.service.interfaces.UserService;
+import com.company.service.exceptions.LoginAlreadyInUseException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static main.java.com.company.authorization.config.Scanner.ReadString;
+import static com.company.authorization.config.Scanner.ReadString;
 
 public class UserServiceImpl implements UserService {
     private static List<User> users = new ArrayList<>(Arrays.asList(
@@ -67,13 +67,13 @@ public class UserServiceImpl implements UserService {
     public void userBlock(int id) {
         users.stream()
                 .filter(u -> u.getId() == (id))
-                .forEach(u -> u.setStatus(Status.BLOCKED));
+                .forEach(u -> u.setStatus(UserStatus.BLOCKED));
     }
 
     @Override
     public void userUnblock(int id) {
         users.stream()
                 .filter(u -> u.getId() == (id))
-                .forEach(u -> u.setStatus(Status.ACTIVE));
+                .forEach(u -> u.setStatus(UserStatus.ACTIVE));
     }
 }

@@ -1,9 +1,9 @@
-package main.java.com.company.view;
+package com.company.view;
 
 
-import main.java.com.company.model.product.Category;
-import main.java.com.company.model.product.ProductManager;
-import main.java.com.company.model.user.User;
+import com.company.model.product.Category;
+import com.company.model.product.ProductManager;
+import com.company.model.user.User;
 
 import java.util.Scanner;
 
