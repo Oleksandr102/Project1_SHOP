@@ -1,6 +1,6 @@
 package com.company.service.interfaces;
 
-import com.company.authorization.exception.LoginAlreadyInUseException;
+import com.company.exception.LoginAlreadyInUseException;
 import com.company.model.user.User;
 
 public interface UserService {
