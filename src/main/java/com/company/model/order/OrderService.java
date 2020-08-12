@@ -3,18 +3,14 @@ package com.company.model.order;
 import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
 import com.company.service.UserServiceImpl;
-import com.company.model.user.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderService {
     private static ProductManager productManager;
     private static UserServiceImpl userServiceImpl;
-    private static List<Order> orders = new ArrayList<>();
+    public static List<Order> orders = new ArrayList<>();
     private static List<Product> resultList = new ArrayList<>();
     private static Map<Integer, Product> resultMap = new HashMap<>();
     private static Map<Integer, Product> resultConfirm = new HashMap<>();
@@ -37,10 +33,10 @@ public class OrderService {
         }
     }
 
-    public static void deleteOrder(User users, Integer idOrder) {
+    public static void deleteOrder(String userLogin, Integer idOrder) {
         System.out.println("You deleted " + idOrder);
         for (int i = 0; i < orders.size(); i++) {
-            if (orders.get(i).getUser().equals(users)) {
+            if (orders.get(i).getUserLogin().equals(userLogin)) {
                 orderResult = orders.get(i).getProduct();
             }
         }
