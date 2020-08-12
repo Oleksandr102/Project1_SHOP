@@ -1,15 +1,21 @@
 package com.company.view;
 
 
+import com.company.model.order.OrderService;
 import com.company.model.product.Category;
+import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
 import com.company.model.user.User;
+import com.company.service.UserServiceImpl;
 
 import java.util.Scanner;
 
+import static com.company.view.AdminMenu.inputReader;
+
 public class UserMenu {
     Scanner scr = new Scanner(System.in);
-    User currentUser = new User();
+    String currentUser = new User().getLogin();
+    private static final String PAUSE = "Press Enter to continue";
 
     private final String[] menu = {
             "1. Show available products.",
@@ -28,25 +34,29 @@ public class UserMenu {
             int check = switch (choice) {
                 case "1" -> {
                     ProductManager.printAllProduct();
+                    pauseConsole();
                     yield 1;
                 }
                 case "2" -> {
                     checkCategories();
+                    pauseConsole();
                     yield 2;
                 }
                 case "3" -> {
                     ProductManager.printAllProduct();
                     System.out.println("Please enter product ID to add it to the order: "); //add to order
-                    int pIdValue = Integer.parseInt(scr.next());
+                    Integer pIdValue = Integer.valueOf(scr.next());
 //                    OrderService.addOrder(currentUser, pIdValue);
+                    pauseConsole();
                     yield 3;
                 }
                 case "4" -> {
-//                    OrderService.showOrdersByUser(currentUser);
+                    OrderService.showOrdersByUser(currentUser);
+                    pauseConsole();
                     yield 4;
                 }
                 case "5" -> {
-//                    OrderService.countSum(currentUser);
+                    OrderService.countSum(currentUser);
                     System.out.println("Do you want to pay with: \n" +
                             "      1.Card\n" +
                             "      2.Cash");
@@ -56,6 +66,7 @@ public class UserMenu {
                     } else {
                         System.out.println("Sorry we don't currently accept cash, please use card");
                     }
+                    pauseConsole();
                     yield 5;
                 }
                 case "6" -> {
@@ -92,6 +103,10 @@ public class UserMenu {
         for (String item : menu) {
             System.out.println(item);
         }
+    }
+    public void pauseConsole() {
+        System.out.println(PAUSE);
+        inputReader();
     }
 
     private void exit() {

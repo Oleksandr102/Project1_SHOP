@@ -63,7 +63,7 @@ public class OrderService {
         return resultMap;
     }
 
-    public static Float countSum(User users) {
+    public static Float countSum(String users) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(users)) {
                 resultList = orders.get(i).getProduct();
@@ -75,7 +75,7 @@ public class OrderService {
         return price;
     }
 
-    public static void showOrdersByUser(User user) {
+    public static void showOrdersByUser(String user) {
         System.out.println("Your orders: ");
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUser().equals(user)) {
