@@ -1,7 +1,7 @@
 package com.company.authorization.view.impl;
 
 import lombok.SneakyThrows;
-import com.company.exception.StringException;
+import com.company.authorization.exception.StringException;
 import com.company.authorization.view.AuthorizationMenu;
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
@@ -45,7 +45,7 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
     @Override
     public void login() {
         System.out.print("Enter login: ");
-        User user = curUser();
+        User user = userService.userShowByLogin(ReadString());
         if (user.getRights().equals(Rights.ADMIN)) {
             password();
             new AdminMenu().runAdminMenu();
@@ -53,11 +53,6 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
             password();
             new UserMenu().dropMenu();
         }
-    }
-
-    public User curUser() {
-        User user = userService.userShowByLogin(ReadString());
-        return user;
     }
 
     @Override
