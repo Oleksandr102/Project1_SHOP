@@ -1,18 +1,19 @@
 package com.company.model.order;
 
 import com.company.model.product.Product;
+import com.company.model.user.User;
 
 import java.util.List;
 
 public class Order {
     private Integer idOrder;
-    private String userLogin;
+    private User user;
     private List<Product> product;
     private OrderStatus status;
 
-    public Order(Integer idOrder, String userLogin, List<Product> product, OrderStatus status) {
+    public Order(Integer idOrder, User user, List<Product> product, OrderStatus status) {
         this.idOrder = idOrder;
-        this.userLogin = userLogin;
+        this.user = user;
         this.product = product;
         this.status = status;
     }
@@ -25,12 +26,12 @@ public class Order {
         this.idOrder = idOrder;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Product> getProduct() {
@@ -51,10 +52,11 @@ public class Order {
 
     @Override
     public String toString() {
-        return
+        return "Order{" +
                 "idOrder=" + idOrder +
-                " userLogin='" + userLogin + '\'' +
-                " product=" + product +
-                ", status=" + status;
+                ", user=" + user +
+                ", product=" + product +
+                ", status=" + status +
+                '}';
     }
 }

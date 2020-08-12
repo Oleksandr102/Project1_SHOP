@@ -1,7 +1,7 @@
 package com.company.service.interfaces;
 
-import com.company.authorization.exception.LoginAlreadyInUseException;
 import com.company.model.user.User;
+import com.company.exception.LoginAlreadyInUseException;
 
 public interface UserService {
     void userAdd(String login) throws LoginAlreadyInUseException;

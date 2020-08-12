@@ -1,10 +1,11 @@
 package com.company.service;
 
-import com.company.authorization.exception.LoginAlreadyInUseException;
+import com.company.authorization.view.impl.AuthorizationMenuImpl;
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
 import com.company.model.user.enums.UserStatus;
 import com.company.service.interfaces.UserService;
+import com.company.exception.LoginAlreadyInUseException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
