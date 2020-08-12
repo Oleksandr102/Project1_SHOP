@@ -1,11 +1,9 @@
 package com.company;
 
-import com.company.view.AdminMenu;
+import com.company.authorization.view.impl.AuthorizationMenuImpl;
 
 public class Main {
-
     public static void main(String[] args) {
-        AdminMenu adminMenu = new AdminMenu();
-        adminMenu.runAdminMenu();
+        new AuthorizationMenuImpl().authorization();
     }
 }
