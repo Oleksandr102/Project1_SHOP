@@ -28,59 +28,59 @@ public class UserMenu {
             "6. Exit."};
 
     public void dropMenu() {
-//        System.out.println(currentUser);
-//        System.out.println("userMenu");
-//        while (true) {
-//            showMenu();
-//            System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-//            System.out.print("Welcome to the shop! What do you need today?: ");
-//            String choice = scr.next();
-//            int check = switch (choice) {
-//                case "1" -> {
-////                    System.out.println(currentUser);
-//                    ProductManager.printAllProduct();
-//                    pauseConsole();
-//                    yield 1;
-//                }
-//                case "2" -> {
-//                    checkCategories();
-//                    pauseConsole();
-//                    yield 2;
-//                }
-//                case "3" -> {
-//                    ProductManager.printAllProduct();
-//                    System.out.println("Please enter product ID to add it to the order: "); //add to order
-//                    Integer pIdValue = Integer.valueOf(scr.next());
-////                    OrderService.addOrder(currentUser, pIdValue);
-//                    pauseConsole();
-//                    yield 3;
-//                }
-//                case "4" -> {
+
+        System.out.println("userMenu");
+        while (true) {
+            showMenu();
+            System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+            System.out.print("Welcome to the shop! What do you need today?: ");
+            String choice = scr.next();
+            int check = switch (choice) {
+                case "1" -> {
+                    System.out.println(currentUser);
+                    ProductManager.printAllProduct();
+                    pauseConsole();
+                    yield 1;
+                }
+                case "2" -> {
+                    checkCategories();
+                    pauseConsole();
+                    yield 2;
+                }
+                case "3" -> {
+                    ProductManager.printAllProduct();
+                    System.out.println("Please enter product ID to add it to the order: "); //add to order
+                    Integer pIdValue = Integer.valueOf(scr.next());
+//                    OrderService.addOrder(currentUser, pIdValue);
+                    pauseConsole();
+                    yield 3;
+                }
+                case "4" -> {
 //                    OrderService.showOrdersByUser(currentUser);
-//                    pauseConsole();
-//                    yield 4;
-//                }
-//                case "5" -> {
+                    pauseConsole();
+                    yield 4;
+                }
+                case "5" -> {
 //                    OrderService.countSum(currentUser);
-//                    System.out.println("Do you want to pay with: \n" +
-//                            "      1.Card\n" +
-//                            "      2.Cash");
-//                    int dec = Integer.parseInt(scr.next());
-//                    if (dec == 1) {
-//                        System.out.println("Thank you for transaction");
-//                    } else {
-//                        System.out.println("Sorry we don't currently accept cash, please use card");
-//                    }
-//                    pauseConsole();
-//                    yield 5;
-//                }
-//                case "6" -> {
-//                    exit();
-//                    yield 6;
-//                }
-//                default -> 1;
-//            };
-//        }
+                    System.out.println("Do you want to pay with: \n" +
+                            "      1.Card\n" +
+                            "      2.Cash");
+                    int dec = Integer.parseInt(scr.next());
+                    if (dec == 1) {
+                        System.out.println("Thank you for transaction");
+                    } else {
+                        System.out.println("Sorry we don't currently accept cash, please use card");
+                    }
+                    pauseConsole();
+                    yield 5;
+                }
+                case "6" -> {
+                    exit();
+                    yield 6;
+                }
+                default -> 1;
+            };
+        }
     }
 
     protected void checkCategories() {
