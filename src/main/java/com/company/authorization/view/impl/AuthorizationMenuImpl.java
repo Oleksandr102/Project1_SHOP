@@ -21,7 +21,8 @@ public class AuthorizationMenuImpl implements AuthorizationMenu {
         Integer count;
         loop:
         while (true) {
-            System.out.println("1-Registration 2-Login 3-Exit");
+            System.out.println("\t\tAUTHORIZATION MENU");
+            System.out.println("1. Registration\n2. Login\n3. Logout");
             try {
                 count = Integer.parseInt(readString());
             } catch (NumberFormatException e) {
