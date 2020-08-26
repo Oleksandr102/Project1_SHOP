@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class OrderService {
     private static ProductManager productManager;
     private static UserServiceImpl userServiceImpl;
-    public static List<Order> orders = new ArrayList<>();
+    public volatile static List<Order> orders = new ArrayList<>();
     private static List<Product> resultList = new ArrayList<>();
     private static Map<Integer, Product> resultMap = new HashMap<>();
     private static Map<Integer, Product> resultConfirm = new HashMap<>();
@@ -58,7 +58,7 @@ public class OrderService {
 
     }
 
-    public static Float countSum(String userLogin) {
+    public synchronized Float countSum(String userLogin) {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUserLogin().equals(userLogin)) {
                 resultList = orders.get(i).getProduct();
@@ -70,7 +70,7 @@ public class OrderService {
         return price;
     }
 
-    public static void showOrdersByUser(String userLogin) { ///add cone case
+    public static synchronized void showOrdersByUser(String userLogin) { ///add cone case
         System.out.println("You orders: " + userLogin);
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUserLogin().equals(userLogin)) {

@@ -15,8 +15,9 @@ import java.util.Scanner;
 import static com.company.config.Scanner.readString;
 
 public class UserMenu {
-    Scanner scr = new Scanner(System.in);
     User currentUser = new AuthorizationMenuImpl().login();
+    Scanner scr = new Scanner(System.in);
+
     private static final String PAUSE = "Press Enter to continue";
 
     private final String[] menu = {
@@ -29,7 +30,7 @@ public class UserMenu {
 
     public void dropMenu() {
 
-        System.out.println("userMenu");
+        System.out.println("\t\tUSER MENU");
         while (true) {
             showMenu();
             System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
