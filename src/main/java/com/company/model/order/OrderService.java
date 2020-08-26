@@ -8,32 +8,36 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderService {
-    private static ProductManager productManager;
-    private static UserServiceImpl userServiceImpl;
-    public volatile static List<Order> orders = new ArrayList<>();
-    private static List<Product> resultList = new ArrayList<>();
-    private static Map<Integer, Product> resultMap = new HashMap<>();
-    private static Map<Integer, Product> resultConfirm = new HashMap<>();
-    private static List<Product> orderResult;
-    private static Integer idOrder = 0;
-    private static Float price = 0f;
-    private static OrderStatus status = OrderStatus.ACTIVE;
+    private static volatile ProductManager productManager;
+    private static volatile UserServiceImpl userServiceImpl;
+    public static volatile List<Order> orders = new ArrayList<>();
+    private static volatile List<Product> resultList = new ArrayList<>();
+    private static volatile Map<Integer, Product> resultMap = new HashMap<>();
+    private static volatile Map<Integer, Product> resultConfirm = new HashMap<>();
+    private static volatile List<Product> orderResult;
+    private static volatile Integer idOrder = 0;
+    private static volatile Float price = 0f;
+    private static volatile OrderStatus status = OrderStatus.ACTIVE;
+    private static volatile List<Product> lstOrder = new ArrayList<>();
 
-    public static void addOrder(String userLogin, Integer idProduct) {
+    public static synchronized void addOrder(String userLogin, Integer idProduct) {
+        if (orders.isEmpty()) {
+            lstOrder.add(ProductManager.getProductById(idProduct));
+            orders.add(new Order(idOrder++, userLogin, lstOrder, status));
+        }
         if (orders != null && !orders.isEmpty()) {
             orders.forEach(order -> {
                 if (order.getUserLogin().equals(userLogin)) {
                     order.getProduct().add(productManager.getProductById(idProduct));
-                } else {
-                    List<Product> lstOrder = new ArrayList<>();
-                    lstOrder.add(productManager.getProductById(idProduct));
+                } else if (order.getUserLogin().equals(userLogin)) {
+                    lstOrder.add(ProductManager.getProductById(idProduct));
                     orders.add(new Order(idOrder++, userLogin, lstOrder, status));
                 }
             });
         }
     }
 
-    public static void deleteOrder(String userLogin, Integer idOrder) {
+    public static synchronized void deleteOrder(String userLogin, Integer idOrder) {
         System.out.println("You deleted " + idOrder);
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getUserLogin().equals(userLogin)) {
@@ -47,7 +51,7 @@ public class OrderService {
         System.out.println(resultMap);
     }
 
-    public static Map<Integer, Product> confirmOrder(String userLogin, OrderStatus status) {
+    public synchronized static Map<Integer, Product> confirmOrder(String userLogin, OrderStatus status) {
         AtomicReference<Integer> count = new AtomicReference<>(0);
         orders.stream().filter(order -> order.getUserLogin().equals(userLogin))
                 .forEach(test -> test.setStatus(status));

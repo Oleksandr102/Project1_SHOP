@@ -1,14 +1,11 @@
 package com.company.view.menu;
 
 
-import com.company.authorization.view.AuthorizationMenu;
 import com.company.authorization.view.impl.AuthorizationMenuImpl;
 import com.company.model.order.OrderService;
 import com.company.model.product.Category;
-import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
 import com.company.model.user.User;
-import com.company.service.UserServiceImpl;
 
 import java.util.Scanner;
 
