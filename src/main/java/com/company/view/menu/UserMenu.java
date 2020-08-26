@@ -51,12 +51,12 @@ public class UserMenu {
                     ProductManager.printAllProduct();
                     System.out.println("Please enter product ID to add it to the order: "); //add to order
                     Integer pIdValue = Integer.valueOf(scr.next());
-//                    OrderService.addOrder(currentUser, pIdValue);
+                    OrderService.addOrder(currentUser.getLogin(), pIdValue);
                     pauseConsole();
                     yield 3;
                 }
                 case "4" -> {
-//                    OrderService.showOrdersByUser(currentUser);
+                    OrderService.showOrdersByUser(currentUser.getLogin());
                     pauseConsole();
                     yield 4;
                 }
