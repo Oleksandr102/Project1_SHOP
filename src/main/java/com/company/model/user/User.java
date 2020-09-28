@@ -1,11 +1,11 @@
 package com.company.model.user;
 
+import com.company.model.user.enums.Rights;
+import com.company.model.user.enums.UserStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import com.company.model.user.enums.Rights;
-import com.company.model.user.enums.UserStatus;
 
 import java.util.Objects;
 
@@ -26,13 +26,13 @@ public class User {
         this.login = login;
         this.password = password;
         this.rights = rights;
-        this.id = (int) Math.abs(Math.random() * 1000000);
+        this.id = (int) Math.abs(Math.random() * 1_000_000);
     }
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.id = (int) Math.abs(Math.random() * 1000000);
+        this.id = (int) Math.abs(Math.random() * 1_000_000);
     }
 
     @Override

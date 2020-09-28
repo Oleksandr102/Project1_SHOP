@@ -2,8 +2,8 @@ package com.company.view.menu.submenu;
 
 import com.company.model.order.OrderService;
 import com.company.model.order.OrderStatus;
-import com.company.view.menu.AdminMenu;
 import com.company.view.Menu;
+import com.company.view.menu.AdminMenu;
 
 import static com.company.config.Scanner.readString;
 import static com.company.model.order.OrderService.orders;

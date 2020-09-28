@@ -3,8 +3,8 @@ package com.company.view.menu.submenu;
 import com.company.model.product.Category;
 import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
-import com.company.view.menu.AdminMenu;
 import com.company.view.Menu;
+import com.company.view.menu.AdminMenu;
 
 import java.util.Arrays;
 import java.util.Map;

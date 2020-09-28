@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
             user.setName(readString());
             System.out.print("Enter seName:   ");
             user.setSeName(readString());
-            user.setId((int) Math.abs(Math.random() * 1000000));
+            user.setId((int) Math.abs(Math.random() * 1_000_000));
             users.add(user);
             System.out.println("User saved");
         } else {

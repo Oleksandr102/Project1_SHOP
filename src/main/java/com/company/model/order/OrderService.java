@@ -4,7 +4,10 @@ import com.company.model.product.Product;
 import com.company.model.product.ProductManager;
 import com.company.service.UserServiceImpl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderService {

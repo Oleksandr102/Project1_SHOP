@@ -1,8 +1,8 @@
 package com.company.view.menu.submenu;
 
 import com.company.service.UserServiceImpl;
-import com.company.view.menu.AdminMenu;
 import com.company.view.Menu;
+import com.company.view.menu.AdminMenu;
 
 import static com.company.config.Scanner.readString;
 

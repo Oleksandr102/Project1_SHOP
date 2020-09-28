@@ -1,20 +1,20 @@
 package com.company.authorization.view.impl;
 
-import lombok.SneakyThrows;
-import com.company.exception.StringException;
 import com.company.authorization.view.AuthorizationMenu;
+import com.company.exception.StringException;
 import com.company.model.user.User;
 import com.company.model.user.enums.Rights;
 import com.company.service.UserServiceImpl;
 import com.company.service.interfaces.UserService;
 import com.company.view.menu.AdminMenu;
 import com.company.view.menu.UserMenu;
+import lombok.SneakyThrows;
 
 import static com.company.config.Scanner.readString;
 
 
 public class AuthorizationMenuImpl implements AuthorizationMenu {
-    private static UserService userService = new UserServiceImpl();
+    private static final UserService userService = new UserServiceImpl();
 
     @SneakyThrows
     public void authorization() {
